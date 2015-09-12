@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE2AE56B1BA3BC8F003C35F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56A1BA3BC8F003C35F8 /* main.m */; };
+		AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56D1BA3BC8F003C35F8 /* AppDelegate.m */; };
+		AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5701BA3BC8F003C35F8 /* ViewController.m */; };
+		AE2AE5741BA3BC8F003C35F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE5721BA3BC8F003C35F8 /* Main.storyboard */; };
+		AE2AE5761BA3BC8F003C35F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE5751BA3BC8F003C35F8 /* Images.xcassets */; };
+		AE2AE5791BA3BC8F003C35F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE5771BA3BC8F003C35F8 /* LaunchScreen.xib */; };
+		AE2AE5851BA3BC8F003C35F8 /* NodeTreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5841BA3BC8F003C35F8 /* NodeTreeTests.m */; };
+		AE2AE58D1BA3BCD1003C35F8 /* libjsonbroker.library.ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2AE58C1BA3BCD1003C35F8 /* libjsonbroker.library.ios.a */; };
+		AE2AE59A1BA3BD63003C35F8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB961341A36C4B200A363E8 /* libsqlite3.dylib */; };
+		AE2AE5D41BA3CE49003C35F8 /* NTIntegerEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5B11BA3CE49003C35F8 /* NTIntegerEncoder.m */; };
+		AE2AE5D51BA3CE49003C35F8 /* NTNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5B31BA3CE49003C35F8 /* NTNode.m */; };
+		AE2AE5D61BA3CE49003C35F8 /* NTNodeContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5B51BA3CE49003C35F8 /* NTNodeContext.m */; };
+		AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5B71BA3CE49003C35F8 /* NTNodeTree.m */; };
+		AE2AE5D81BA3CE49003C35F8 /* NTColumnDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5BA1BA3CE49003C35F8 /* NTColumnDescriptor.m */; };
+		AE2AE5D91BA3CE49003C35F8 /* NTNodeTreeSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5BC1BA3CE49003C35F8 /* NTNodeTreeSchema.m */; };
+		AE2AE5DA1BA3CE49003C35F8 /* NTSchemaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5BE1BA3CE49003C35F8 /* NTSchemaManager.m */; };
+		AE2AE5DB1BA3CE49003C35F8 /* NTTableDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5C01BA3CE49003C35F8 /* NTTableDescriptor.m */; };
+		AE2AE5DC1BA3CE49003C35F8 /* NTTableProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5C21BA3CE49003C35F8 /* NTTableProperty.m */; };
+		AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5C51BA3CE49003C35F8 /* NTSqliteConnection.m */; };
+		AE2AE5DE1BA3CE49003C35F8 /* NTSqliteStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5C71BA3CE49003C35F8 /* NTSqliteStatement.m */; };
+		AE2AE5DF1BA3CE49003C35F8 /* NTSqliteUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5C91BA3CE49003C35F8 /* NTSqliteUtilities.m */; };
+		AE2AE5E81BA3CE62003C35F8 /* NTBooleanIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5CB1BA3CE49003C35F8 /* NTBooleanIntegrationTest.m */; };
+		AE2AE5E91BA3CE62003C35F8 /* NTDoubleIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5CC1BA3CE49003C35F8 /* NTDoubleIntegrationTest.m */; };
+		AE2AE5EA1BA3CE62003C35F8 /* NTIntegerIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5CD1BA3CE49003C35F8 /* NTIntegerIntegrationTest.m */; };
+		AE2AE5EB1BA3CE62003C35F8 /* NTNodeIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5CE1BA3CE49003C35F8 /* NTNodeIntegrationTest.m */; };
+		AE2AE5EC1BA3CE62003C35F8 /* NTNullIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5CF1BA3CE49003C35F8 /* NTNullIntegrationTest.m */; };
+		AE2AE5ED1BA3CE62003C35F8 /* NTStringIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5D01BA3CE49003C35F8 /* NTStringIntegrationTest.m */; };
+		AE2AE5EE1BA3CE62003C35F8 /* NTTestContext.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5D21BA3CE49003C35F8 /* NTTestContext.m */; };
+		AE2AE62A1BA3D3A2003C35F8 /* NTJSONWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE6291BA3D3A2003C35F8 /* NTJSONWriter.m */; };
+		AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */; };
+		AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
+		AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE2AE57F1BA3BC8F003C35F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AEB960341A36ABAD00A363E8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE2AE5651BA3BC8F003C35F8;
+			remoteInfo = NodeTree;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE2AE5661BA3BC8F003C35F8 /* NodeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2AE5691BA3BC8F003C35F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE2AE56A1BA3BC8F003C35F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE2AE56C1BA3BC8F003C35F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AE2AE56D1BA3BC8F003C35F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE2AE56F1BA3BC8F003C35F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AE2AE5701BA3BC8F003C35F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AE2AE5731BA3BC8F003C35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE2AE5751BA3BC8F003C35F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AE2AE5781BA3BC8F003C35F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AE2AE57E1BA3BC8F003C35F8 /* NodeTreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NodeTreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2AE5831BA3BC8F003C35F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE2AE5841BA3BC8F003C35F8 /* NodeTreeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeTreeTests.m; sourceTree = "<group>"; };
+		AE2AE58C1BA3BCD1003C35F8 /* libjsonbroker.library.ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.ios.a; path = "../jsonbroker/build/Debug-iphoneos/libjsonbroker.library.ios.a"; sourceTree = "<group>"; };
+		AE2AE5B01BA3CE49003C35F8 /* NTIntegerEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTIntegerEncoder.h; sourceTree = "<group>"; };
+		AE2AE5B11BA3CE49003C35F8 /* NTIntegerEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTIntegerEncoder.m; sourceTree = "<group>"; };
+		AE2AE5B21BA3CE49003C35F8 /* NTNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNode.h; sourceTree = "<group>"; };
+		AE2AE5B31BA3CE49003C35F8 /* NTNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNode.m; sourceTree = "<group>"; };
+		AE2AE5B41BA3CE49003C35F8 /* NTNodeContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeContext.h; sourceTree = "<group>"; };
+		AE2AE5B51BA3CE49003C35F8 /* NTNodeContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeContext.m; sourceTree = "<group>"; };
+		AE2AE5B61BA3CE49003C35F8 /* NTNodeTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeTree.h; sourceTree = "<group>"; };
+		AE2AE5B71BA3CE49003C35F8 /* NTNodeTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeTree.m; sourceTree = "<group>"; };
+		AE2AE5B91BA3CE49003C35F8 /* NTColumnDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTColumnDescriptor.h; sourceTree = "<group>"; };
+		AE2AE5BA1BA3CE49003C35F8 /* NTColumnDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTColumnDescriptor.m; sourceTree = "<group>"; };
+		AE2AE5BB1BA3CE49003C35F8 /* NTNodeTreeSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeTreeSchema.h; sourceTree = "<group>"; };
+		AE2AE5BC1BA3CE49003C35F8 /* NTNodeTreeSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeTreeSchema.m; sourceTree = "<group>"; };
+		AE2AE5BD1BA3CE49003C35F8 /* NTSchemaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSchemaManager.h; sourceTree = "<group>"; };
+		AE2AE5BE1BA3CE49003C35F8 /* NTSchemaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSchemaManager.m; sourceTree = "<group>"; };
+		AE2AE5BF1BA3CE49003C35F8 /* NTTableDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTTableDescriptor.h; sourceTree = "<group>"; };
+		AE2AE5C01BA3CE49003C35F8 /* NTTableDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTTableDescriptor.m; sourceTree = "<group>"; };
+		AE2AE5C11BA3CE49003C35F8 /* NTTableProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTTableProperty.h; sourceTree = "<group>"; };
+		AE2AE5C21BA3CE49003C35F8 /* NTTableProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTTableProperty.m; sourceTree = "<group>"; };
+		AE2AE5C41BA3CE49003C35F8 /* NTSqliteConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSqliteConnection.h; sourceTree = "<group>"; };
+		AE2AE5C51BA3CE49003C35F8 /* NTSqliteConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSqliteConnection.m; sourceTree = "<group>"; };
+		AE2AE5C61BA3CE49003C35F8 /* NTSqliteStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSqliteStatement.h; sourceTree = "<group>"; };
+		AE2AE5C71BA3CE49003C35F8 /* NTSqliteStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSqliteStatement.m; sourceTree = "<group>"; };
+		AE2AE5C81BA3CE49003C35F8 /* NTSqliteUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSqliteUtilities.h; sourceTree = "<group>"; };
+		AE2AE5C91BA3CE49003C35F8 /* NTSqliteUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSqliteUtilities.m; sourceTree = "<group>"; };
+		AE2AE5CB1BA3CE49003C35F8 /* NTBooleanIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTBooleanIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5CC1BA3CE49003C35F8 /* NTDoubleIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTDoubleIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5CD1BA3CE49003C35F8 /* NTIntegerIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTIntegerIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5CE1BA3CE49003C35F8 /* NTNodeIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5CF1BA3CE49003C35F8 /* NTNullIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNullIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5D01BA3CE49003C35F8 /* NTStringIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTStringIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE5D11BA3CE49003C35F8 /* NTTestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTTestContext.h; sourceTree = "<group>"; };
+		AE2AE5D21BA3CE49003C35F8 /* NTTestContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTTestContext.m; sourceTree = "<group>"; };
+		AE2AE6281BA3D3A2003C35F8 /* NTJSONWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTJSONWriter.h; sourceTree = "<group>"; };
+		AE2AE6291BA3D3A2003C35F8 /* NTJSONWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONWriter.m; sourceTree = "<group>"; };
+		AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONWriterIntegrationTest.m; sourceTree = "<group>"; };
+		AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json; sourceTree = "<group>"; };
+		AEB960B01A36ACAA00A363E8 /* libjsonbroker.library.ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.ios.a; path = "../jsonbroker/build/Debug-iphoneos/libjsonbroker.library.ios.a"; sourceTree = "<group>"; };
+		AEB961341A36C4B200A363E8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		AEB961811A36C60600A363E8 /* libjsonbroker.library.osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.osx.a; path = ../jsonbroker/build/Debug/libjsonbroker.library.osx.a; sourceTree = "<group>"; };
+		AEB961831A36C60E00A363E8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
+		AEB961851A36C61D00A363E8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE2AE5631BA3BC8F003C35F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE2AE59A1BA3BD63003C35F8 /* libsqlite3.dylib in Frameworks */,
+				AE2AE58D1BA3BCD1003C35F8 /* libjsonbroker.library.ios.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE2AE57B1BA3BC8F003C35F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE2AE5671BA3BC8F003C35F8 /* NodeTree */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE56C1BA3BC8F003C35F8 /* AppDelegate.h */,
+				AE2AE56D1BA3BC8F003C35F8 /* AppDelegate.m */,
+				AE2AE56F1BA3BC8F003C35F8 /* ViewController.h */,
+				AE2AE5701BA3BC8F003C35F8 /* ViewController.m */,
+				AE2AE5721BA3BC8F003C35F8 /* Main.storyboard */,
+				AE2AE5751BA3BC8F003C35F8 /* Images.xcassets */,
+				AE2AE5771BA3BC8F003C35F8 /* LaunchScreen.xib */,
+				AE2AE5681BA3BC8F003C35F8 /* Supporting Files */,
+			);
+			path = NodeTree;
+			sourceTree = "<group>";
+		};
+		AE2AE5681BA3BC8F003C35F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5691BA3BC8F003C35F8 /* Info.plist */,
+				AE2AE56A1BA3BC8F003C35F8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE2AE5811BA3BC8F003C35F8 /* NodeTreeTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5841BA3BC8F003C35F8 /* NodeTreeTests.m */,
+				AE2AE5821BA3BC8F003C35F8 /* Supporting Files */,
+			);
+			path = NodeTreeTests;
+			sourceTree = "<group>";
+		};
+		AE2AE5821BA3BC8F003C35F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5831BA3BC8F003C35F8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AE2AE5AE1BA3CE49003C35F8 /* module.NodeTree */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5AF1BA3CE49003C35F8 /* auxiliary */,
+				AE2AE5B21BA3CE49003C35F8 /* NTNode.h */,
+				AE2AE5B31BA3CE49003C35F8 /* NTNode.m */,
+				AE2AE5B41BA3CE49003C35F8 /* NTNodeContext.h */,
+				AE2AE5B51BA3CE49003C35F8 /* NTNodeContext.m */,
+				AE2AE5B61BA3CE49003C35F8 /* NTNodeTree.h */,
+				AE2AE5B71BA3CE49003C35F8 /* NTNodeTree.m */,
+				AE2AE6271BA3D378003C35F8 /* json */,
+				AE2AE5B81BA3CE49003C35F8 /* schema */,
+				AE2AE5C31BA3CE49003C35F8 /* sqlite */,
+				AE2AE5CA1BA3CE49003C35F8 /* test */,
+			);
+			path = module.NodeTree;
+			sourceTree = "<group>";
+		};
+		AE2AE5AF1BA3CE49003C35F8 /* auxiliary */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5B01BA3CE49003C35F8 /* NTIntegerEncoder.h */,
+				AE2AE5B11BA3CE49003C35F8 /* NTIntegerEncoder.m */,
+			);
+			path = auxiliary;
+			sourceTree = "<group>";
+		};
+		AE2AE5B81BA3CE49003C35F8 /* schema */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5B91BA3CE49003C35F8 /* NTColumnDescriptor.h */,
+				AE2AE5BA1BA3CE49003C35F8 /* NTColumnDescriptor.m */,
+				AE2AE5BB1BA3CE49003C35F8 /* NTNodeTreeSchema.h */,
+				AE2AE5BC1BA3CE49003C35F8 /* NTNodeTreeSchema.m */,
+				AE2AE5BD1BA3CE49003C35F8 /* NTSchemaManager.h */,
+				AE2AE5BE1BA3CE49003C35F8 /* NTSchemaManager.m */,
+				AE2AE5BF1BA3CE49003C35F8 /* NTTableDescriptor.h */,
+				AE2AE5C01BA3CE49003C35F8 /* NTTableDescriptor.m */,
+				AE2AE5C11BA3CE49003C35F8 /* NTTableProperty.h */,
+				AE2AE5C21BA3CE49003C35F8 /* NTTableProperty.m */,
+			);
+			path = schema;
+			sourceTree = "<group>";
+		};
+		AE2AE5C31BA3CE49003C35F8 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5C41BA3CE49003C35F8 /* NTSqliteConnection.h */,
+				AE2AE5C51BA3CE49003C35F8 /* NTSqliteConnection.m */,
+				AE2AE5C61BA3CE49003C35F8 /* NTSqliteStatement.h */,
+				AE2AE5C71BA3CE49003C35F8 /* NTSqliteStatement.m */,
+				AE2AE5C81BA3CE49003C35F8 /* NTSqliteUtilities.h */,
+				AE2AE5C91BA3CE49003C35F8 /* NTSqliteUtilities.m */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		AE2AE5CA1BA3CE49003C35F8 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5CB1BA3CE49003C35F8 /* NTBooleanIntegrationTest.m */,
+				AE2AE5CC1BA3CE49003C35F8 /* NTDoubleIntegrationTest.m */,
+				AE2AE5CD1BA3CE49003C35F8 /* NTIntegerIntegrationTest.m */,
+				AE2AE5CE1BA3CE49003C35F8 /* NTNodeIntegrationTest.m */,
+				AE2AE5CF1BA3CE49003C35F8 /* NTNullIntegrationTest.m */,
+				AE2AE5D01BA3CE49003C35F8 /* NTStringIntegrationTest.m */,
+				AE2AE5D11BA3CE49003C35F8 /* NTTestContext.h */,
+				AE2AE5D21BA3CE49003C35F8 /* NTTestContext.m */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
+		AE2AE6271BA3D378003C35F8 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE6281BA3D3A2003C35F8 /* NTJSONWriter.h */,
+				AE2AE6291BA3D3A2003C35F8 /* NTJSONWriter.m */,
+				AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */,
+				AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		AEB960331A36ABAD00A363E8 = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5AE1BA3CE49003C35F8 /* module.NodeTree */,
+				AE2AE5671BA3BC8F003C35F8 /* NodeTree */,
+				AE2AE5811BA3BC8F003C35F8 /* NodeTreeTests */,
+				AEB9608F1A36ABF500A363E8 /* Frameworks */,
+				AEB9603D1A36ABAD00A363E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AEB9603D1A36ABAD00A363E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE5661BA3BC8F003C35F8 /* NodeTree.app */,
+				AE2AE57E1BA3BC8F003C35F8 /* NodeTreeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AEB9608F1A36ABF500A363E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE2AE58C1BA3BCD1003C35F8 /* libjsonbroker.library.ios.a */,
+				AEB961851A36C61D00A363E8 /* SenTestingKit.framework */,
+				AEB961831A36C60E00A363E8 /* libsqlite3.dylib */,
+				AEB961811A36C60600A363E8 /* libjsonbroker.library.osx.a */,
+				AEB961341A36C4B200A363E8 /* libsqlite3.dylib */,
+				AEB960B01A36ACAA00A363E8 /* libjsonbroker.library.ios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE2AE5651BA3BC8F003C35F8 /* NodeTree */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE2AE58A1BA3BC8F003C35F8 /* Build configuration list for PBXNativeTarget "NodeTree" */;
+			buildPhases = (
+				AE2AE5621BA3BC8F003C35F8 /* Sources */,
+				AE2AE5631BA3BC8F003C35F8 /* Frameworks */,
+				AE2AE5641BA3BC8F003C35F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NodeTree;
+			productName = NodeTree;
+			productReference = AE2AE5661BA3BC8F003C35F8 /* NodeTree.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE2AE57D1BA3BC8F003C35F8 /* NodeTreeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE2AE58B1BA3BC8F003C35F8 /* Build configuration list for PBXNativeTarget "NodeTreeTests" */;
+			buildPhases = (
+				AE2AE57A1BA3BC8F003C35F8 /* Sources */,
+				AE2AE57B1BA3BC8F003C35F8 /* Frameworks */,
+				AE2AE57C1BA3BC8F003C35F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE2AE5801BA3BC8F003C35F8 /* PBXTargetDependency */,
+			);
+			name = NodeTreeTests;
+			productName = NodeTreeTests;
+			productReference = AE2AE57E1BA3BC8F003C35F8 /* NodeTreeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AEB960341A36ABAD00A363E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = com.hexbeerium;
+				TargetAttributes = {
+					AE2AE5651BA3BC8F003C35F8 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					AE2AE57D1BA3BC8F003C35F8 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = AE2AE5651BA3BC8F003C35F8;
+					};
+				};
+			};
+			buildConfigurationList = AEB960371A36ABAD00A363E8 /* Build configuration list for PBXProject "NodeTree" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AEB960331A36ABAD00A363E8;
+			productRefGroup = AEB9603D1A36ABAD00A363E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE2AE5651BA3BC8F003C35F8 /* NodeTree */,
+				AE2AE57D1BA3BC8F003C35F8 /* NodeTreeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE2AE5641BA3BC8F003C35F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE2AE5741BA3BC8F003C35F8 /* Main.storyboard in Resources */,
+				AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */,
+				AE2AE5791BA3BC8F003C35F8 /* LaunchScreen.xib in Resources */,
+				AE2AE5761BA3BC8F003C35F8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE2AE57C1BA3BC8F003C35F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE2AE5621BA3BC8F003C35F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE2AE5DA1BA3CE49003C35F8 /* NTSchemaManager.m in Sources */,
+				AE2AE5D81BA3CE49003C35F8 /* NTColumnDescriptor.m in Sources */,
+				AE2AE62A1BA3D3A2003C35F8 /* NTJSONWriter.m in Sources */,
+				AE2AE5D51BA3CE49003C35F8 /* NTNode.m in Sources */,
+				AE2AE5DF1BA3CE49003C35F8 /* NTSqliteUtilities.m in Sources */,
+				AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */,
+				AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */,
+				AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */,
+				AE2AE5DB1BA3CE49003C35F8 /* NTTableDescriptor.m in Sources */,
+				AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */,
+				AE2AE5D91BA3CE49003C35F8 /* NTNodeTreeSchema.m in Sources */,
+				AE2AE5DC1BA3CE49003C35F8 /* NTTableProperty.m in Sources */,
+				AE2AE5DE1BA3CE49003C35F8 /* NTSqliteStatement.m in Sources */,
+				AE2AE5D41BA3CE49003C35F8 /* NTIntegerEncoder.m in Sources */,
+				AE2AE5D61BA3CE49003C35F8 /* NTNodeContext.m in Sources */,
+				AE2AE56B1BA3BC8F003C35F8 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE2AE57A1BA3BC8F003C35F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE2AE5EC1BA3CE62003C35F8 /* NTNullIntegrationTest.m in Sources */,
+				AE2AE5EB1BA3CE62003C35F8 /* NTNodeIntegrationTest.m in Sources */,
+				AE2AE5EA1BA3CE62003C35F8 /* NTIntegerIntegrationTest.m in Sources */,
+				AE2AE5E81BA3CE62003C35F8 /* NTBooleanIntegrationTest.m in Sources */,
+				AE2AE5E91BA3CE62003C35F8 /* NTDoubleIntegrationTest.m in Sources */,
+				AE2AE5ED1BA3CE62003C35F8 /* NTStringIntegrationTest.m in Sources */,
+				AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */,
+				AE2AE5851BA3BC8F003C35F8 /* NodeTreeTests.m in Sources */,
+				AE2AE5EE1BA3CE62003C35F8 /* NTTestContext.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE2AE5801BA3BC8F003C35F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE2AE5651BA3BC8F003C35F8 /* NodeTree */;
+			targetProxy = AE2AE57F1BA3BC8F003C35F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE2AE5721BA3BC8F003C35F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE2AE5731BA3BC8F003C35F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE2AE5771BA3BC8F003C35F8 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE2AE5781BA3BC8F003C35F8 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE2AE5861BA3BC8F003C35F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NodeTree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rlong/projects.tech/objective-c/module.nbarn/jsonbroker/build/Debug-iphoneos",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE2AE5871BA3BC8F003C35F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = NodeTree/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/rlong/projects.tech/objective-c/module.nbarn/jsonbroker/build/Debug-iphoneos",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AE2AE5881BA3BC8F003C35F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = NodeTreeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NodeTree.app/NodeTree";
+			};
+			name = Debug;
+		};
+		AE2AE5891BA3BC8F003C35F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = NodeTreeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NodeTree.app/NodeTree";
+			};
+			name = Release;
+		};
+		AEB9605D1A36ABAD00A363E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "user-headers/**";
+			};
+			name = Debug;
+		};
+		AEB9605E1A36ABAD00A363E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "user-headers/**";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE2AE58A1BA3BC8F003C35F8 /* Build configuration list for PBXNativeTarget "NodeTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE2AE5861BA3BC8F003C35F8 /* Debug */,
+				AE2AE5871BA3BC8F003C35F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AE2AE58B1BA3BC8F003C35F8 /* Build configuration list for PBXNativeTarget "NodeTreeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE2AE5881BA3BC8F003C35F8 /* Debug */,
+				AE2AE5891BA3BC8F003C35F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AEB960371A36ABAD00A363E8 /* Build configuration list for PBXProject "NodeTree" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEB9605D1A36ABAD00A363E8 /* Debug */,
+				AEB9605E1A36ABAD00A363E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AEB960341A36ABAD00A363E8 /* Project object */;
+}
