@@ -40,6 +40,11 @@
 		AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
 		AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
 		AEF03ABF1BAD2AAB00923748 /* FALog.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ABB1BAD2A9A00923748 /* FALog.m */; };
+		AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC11BAD302200923748 /* NTNodeIterator.m */; };
+		AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC41BAD433900923748 /* NTJSONReader.m */; };
+		AEF03AC71BAD434B00923748 /* NTJSONReaderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */; };
+		AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ACC1BAD597900923748 /* NTNodePropertyIterator.m */; };
+		AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ACF1BAD59E400923748 /* NTNodeProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +126,15 @@
 		AEF03ABC1BAD2A9A00923748 /* NumericUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
 		AEF03ABD1BAD2A9A00923748 /* OutputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamHelper.swift; sourceTree = "<group>"; };
 		AEF03ABE1BAD2A9A00923748 /* StreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamHelper.swift; sourceTree = "<group>"; };
+		AEF03AC01BAD302200923748 /* NTNodeIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeIterator.h; sourceTree = "<group>"; };
+		AEF03AC11BAD302200923748 /* NTNodeIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeIterator.m; sourceTree = "<group>"; };
+		AEF03AC31BAD433900923748 /* NTJSONReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTJSONReader.h; sourceTree = "<group>"; };
+		AEF03AC41BAD433900923748 /* NTJSONReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONReader.m; sourceTree = "<group>"; };
+		AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONReaderIntegrationTest.m; sourceTree = "<group>"; };
+		AEF03ACB1BAD597900923748 /* NTNodePropertyIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodePropertyIterator.h; sourceTree = "<group>"; };
+		AEF03ACC1BAD597900923748 /* NTNodePropertyIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodePropertyIterator.m; sourceTree = "<group>"; };
+		AEF03ACE1BAD59E400923748 /* NTNodeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeProperty.h; sourceTree = "<group>"; };
+		AEF03ACF1BAD59E400923748 /* NTNodeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeProperty.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +206,14 @@
 				AE2AE5B31BA3CE49003C35F8 /* NTNode.m */,
 				AE2AE5B41BA3CE49003C35F8 /* NTNodeContext.h */,
 				AE2AE5B51BA3CE49003C35F8 /* NTNodeContext.m */,
+				AEF03ACB1BAD597900923748 /* NTNodePropertyIterator.h */,
+				AEF03ACC1BAD597900923748 /* NTNodePropertyIterator.m */,
+				AEF03ACE1BAD59E400923748 /* NTNodeProperty.h */,
+				AEF03ACF1BAD59E400923748 /* NTNodeProperty.m */,
 				AE2AE5B61BA3CE49003C35F8 /* NTNodeTree.h */,
 				AE2AE5B71BA3CE49003C35F8 /* NTNodeTree.m */,
+				AEF03AC01BAD302200923748 /* NTNodeIterator.h */,
+				AEF03AC11BAD302200923748 /* NTNodeIterator.m */,
 				AE2AE6271BA3D378003C35F8 /* json */,
 				AE2AE5B81BA3CE49003C35F8 /* schema */,
 				AE2AE5C31BA3CE49003C35F8 /* sqlite */,
@@ -263,6 +283,9 @@
 				AE2AE6291BA3D3A2003C35F8 /* NTJSONWriter.m */,
 				AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */,
 				AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */,
+				AEF03AC31BAD433900923748 /* NTJSONReader.h */,
+				AEF03AC41BAD433900923748 /* NTJSONReader.m */,
+				AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -435,14 +458,18 @@
 				AE2AE5DA1BA3CE49003C35F8 /* NTSchemaManager.m in Sources */,
 				AE2AE5D81BA3CE49003C35F8 /* NTColumnDescriptor.m in Sources */,
 				AE2AE62A1BA3D3A2003C35F8 /* NTJSONWriter.m in Sources */,
+				AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */,
+				AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */,
 				AEF03ABF1BAD2AAB00923748 /* FALog.m in Sources */,
 				AE2AE5D51BA3CE49003C35F8 /* NTNode.m in Sources */,
 				AE2AE5DF1BA3CE49003C35F8 /* NTSqliteUtilities.m in Sources */,
 				AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */,
 				AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */,
 				AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */,
+				AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */,
 				AE2AE5DB1BA3CE49003C35F8 /* NTTableDescriptor.m in Sources */,
 				AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */,
+				AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */,
 				AE2AE5D91BA3CE49003C35F8 /* NTNodeTreeSchema.m in Sources */,
 				AE2AE5DC1BA3CE49003C35F8 /* NTTableProperty.m in Sources */,
 				AE2AE5DE1BA3CE49003C35F8 /* NTSqliteStatement.m in Sources */,
@@ -457,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2AE5EC1BA3CE62003C35F8 /* NTNullIntegrationTest.m in Sources */,
+				AEF03AC71BAD434B00923748 /* NTJSONReaderIntegrationTest.m in Sources */,
 				AE2AE5EB1BA3CE62003C35F8 /* NTNodeIntegrationTest.m in Sources */,
 				AE2AE5EA1BA3CE62003C35F8 /* NTIntegerIntegrationTest.m in Sources */,
 				AE2AE5E81BA3CE62003C35F8 /* NTBooleanIntegrationTest.m in Sources */,

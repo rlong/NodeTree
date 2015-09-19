@@ -12,12 +12,30 @@
 @class NTNodeContext;
 
 @interface NTNode : NSObject
+    
+    
+@property (nonatomic, strong) NSNumber* pk;
+@property (nonatomic, strong) NSNumber* parentPk; // can be nil for root nodes
+@property (nonatomic, strong) NSString* parentPkPath; // can be nil for root nodes
+
+@property (nonatomic, strong) NSString* edgeName; // can be nil
+@property (nonatomic, strong) NSNumber* edgeIndex; // can be nil
+
+
+@property (nonatomic, strong) NSNumber* typeId; // can be nil
+
+
+// transient fields ... 
+@property (nonatomic, readonly) NSString* pkPath;
+@property (nonatomic, readonly) NTNodeContext* context;
+
 
 
 #pragma mark - instance lifecycle
 
 
--(id)initWithContext:(NTNodeContext*)context pk:(sqlite3_int64)pk parentPkPath:(NSString*)parentPkPath;
+// 'parentPk' and 'parentPkPath' can be nil for root nodes
+-(id)initWithContext:(NTNodeContext*)context pk:(NSNumber*)pk parentPk:(NSNumber*)parentPk parentPkPath:(NSString*)parentPkPath;
 
 
 #pragma mark -

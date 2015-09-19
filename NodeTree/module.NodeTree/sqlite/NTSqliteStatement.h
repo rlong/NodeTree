@@ -25,6 +25,11 @@
 -(void)finalize;
 
 -(long long)getInt64AtColumn:(int)columnIndex;
+
+- (NSNumber*)getNumberAtColumn:(int)columnIndex defaultTo:(NSNumber*)defaultValue;
+
+- (NSString*)getStringAtColumn:(int)columnIndex defaultTo:(NSString*)defaultValue;
+
 -(NSString*)getTextAtColumn:(int)columnIndex;
 
 -(int)step;

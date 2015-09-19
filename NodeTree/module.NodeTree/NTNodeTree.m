@@ -67,10 +67,10 @@
         
         long long rowId = [connection last_insert_rowid];
         
-        NSString* path = [NTIntegerEncoder base64Encode:rowId];
+        NSString* path = [NTIntegerEncoder base64EncodeLongLong:rowId];
         Log_debugString( path );
         
-        NTNode* answer = [[NTNode alloc] initWithContext:context pk:rowId parentPkPath:path];
+        NTNode* answer = [[NTNode alloc] initWithContext:context pk:@(rowId) parentPk:nil parentPkPath:nil];
         
         return answer;
     
@@ -104,11 +104,9 @@
 
         int resultCode = [sqliteStatement step];
         if( SQLITE_ROW == resultCode ) {
-            long long pk = [sqliteStatement getInt64AtColumn:0];
-            NSString* path = [NTIntegerEncoder base64Encode:pk];
-            Log_debugString( path );
+            NSNumber* pk = [sqliteStatement getNumberAtColumn:0 defaultTo:nil];
             
-            NTNode* answer = [[NTNode alloc] initWithContext:context pk:pk parentPkPath:path];
+            NTNode* answer = [[NTNode alloc] initWithContext:context pk:pk parentPk:nil parentPkPath:nil];
             
             return answer;
             

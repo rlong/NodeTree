@@ -69,11 +69,55 @@
 }
 
 
+- (NSNumber*)getNumberAtColumn:(int)columnIndex defaultTo:(NSNumber*)defaultValue;
+{
+    
+    int columnType = sqlite3_column_type( _statement, columnIndex );
+    
+    if( SQLITE_NULL == columnType ) {
+        return defaultValue;
+    }
+
+    if( SQLITE_INTEGER == columnType ) {
+        long long value = sqlite3_column_int64( _statement, columnIndex);
+        return [NSNumber numberWithLongLong:value];
+    }
+
+    if( SQLITE_FLOAT == columnType ) {
+        double value = sqlite3_column_double( _statement, columnIndex);
+        return [NSNumber numberWithDouble:value];
+    }
+    
+    Log_warnFormat( @"columnIndex = %d; columnType = %d; ", columnIndex, columnType );
+
+    return defaultValue;
+    
+}
+
 -(long long)getInt64AtColumn:(int)columnIndex {
     
-    
-
     return sqlite3_column_int64( _statement, columnIndex);
+    
+}
+
+
+- (NSString*)getStringAtColumn:(int)columnIndex defaultTo:(NSString*)defaultValue;
+{
+    
+    int columnType = sqlite3_column_type( _statement, columnIndex );
+    
+    if( SQLITE_NULL == columnType ) {
+        return defaultValue;
+    }
+    
+    if( SQLITE_TEXT == columnType ) {
+        const char* text = (const char*)sqlite3_column_text( _statement, columnIndex);
+        return [NSString stringWithUTF8String:text];
+    }
+    Log_warnFormat( @"columnIndex = %d; columnType = %d; ", columnIndex, columnType );
+    
+    return defaultValue;
+
     
 }
 

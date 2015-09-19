@@ -23,9 +23,6 @@
 
 @implementation NTNode {
     
-    NTNodeContext* _context;
-    NSString* _parentPkPath;
-    sqlite3_int64  _pk;
 
 }
 
@@ -34,7 +31,9 @@
 #pragma mark instance lifecycle
 
 
--(id)initWithContext:(NTNodeContext*)context pk:(sqlite3_int64)pk parentPkPath:(NSString*)parentPkPath {
+// 'parentPk' and 'parentPkPath' can be nil for root nodes
+-(id)initWithContext:(NTNodeContext*)context pk:(NSNumber*)pk parentPk:(NSNumber*)parentPk parentPkPath:(NSString*)parentPkPath;
+{
     
     NTNode* answer = [super init];
     
@@ -42,8 +41,14 @@
         
         _context = context;
         _pk = pk;
+        _parentPk = parentPk;
         _parentPkPath = parentPkPath;
         
+        if( nil == _parentPkPath ) {
+            _pkPath = [[NTIntegerEncoder base64EncodeNumber:pk] stringByAppendingString:@"."];
+        } else {
+            _pkPath = [_parentPkPath stringByAppendingFormat:@"%@.", [NTIntegerEncoder base64EncodeNumber:pk]];
+        }
     }
     
     return answer;
@@ -67,8 +72,8 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
-        [sqliteStatement bindText:_parentPkPath atIndex:2];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:_pkPath atIndex:2];
         [sqliteStatement bindText:key atIndex:3];
         [sqliteStatement bindInt64:typeId atIndex:4];
         
@@ -95,8 +100,8 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
-        [sqliteStatement bindText:_parentPkPath atIndex:2];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:_pkPath atIndex:2];
         [sqliteStatement bindText:key atIndex:3];
         
         [sqliteStatement step];
@@ -122,8 +127,8 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
-        [sqliteStatement bindText:_parentPkPath atIndex:2];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:_pkPath atIndex:2];
         [sqliteStatement bindText:key atIndex:3];
         [sqliteStatement bindInt64:index atIndex:4];
         
@@ -151,8 +156,8 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
-        [sqliteStatement bindText:_parentPkPath atIndex:2];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:_pkPath atIndex:2];
         [sqliteStatement bindInt64:index atIndex:3];
         
         [sqliteStatement step];
@@ -179,8 +184,8 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
-        [sqliteStatement bindText:_parentPkPath atIndex:2];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:_pkPath atIndex:2];
         [sqliteStatement bindInt64:index atIndex:3];
         [sqliteStatement bindInt64:typeId atIndex:4];
         
@@ -200,10 +205,7 @@
 
 -(NTNode*)buildNodeHandle:(sqlite3_int64)rowId {
     
-    NSString* path = [NSString stringWithFormat:@"%@.%@", _parentPkPath, [NTIntegerEncoder base64Encode:rowId]];
-    Log_debugString( path );
-    
-    NTNode* answer = [[NTNode alloc] initWithContext:_context pk:rowId parentPkPath:path];
+    NTNode* answer = [[NTNode alloc] initWithContext:_context  pk:@(rowId) parentPk:_pk parentPkPath:_pkPath];
     
     return answer;
     
@@ -227,7 +229,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         [sqliteStatement bindInt:intValue atIndex:3];
         
@@ -258,7 +260,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindInt64:index atIndex:2];
         [sqliteStatement bindInt:intValue atIndex:3];
         
@@ -288,7 +290,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindInt64:index atIndex:2];
         [sqliteStatement bindInt:value atIndex:3];
         
@@ -311,7 +313,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         [sqliteStatement bindInt:value atIndex:3];
         
@@ -337,7 +339,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindInt64:index atIndex:2];
         
         [sqliteStatement step];
@@ -358,7 +360,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         
         [sqliteStatement step];
@@ -385,7 +387,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindInt64:index atIndex:2];
         [sqliteStatement bindDouble:value atIndex:3];
         
@@ -408,7 +410,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         [sqliteStatement bindDouble:value atIndex:3];
         
@@ -437,7 +439,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         
         int resultCode = [sqliteStatement step];
@@ -496,7 +498,7 @@
     
         @try {
     
-            [sqliteStatement bindInt64:_pk atIndex:1];
+            [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
             [sqliteStatement bindInt64:index atIndex:2];
             [sqliteStatement bindText:value atIndex:3];
     
@@ -519,7 +521,7 @@
     
     @try {
         
-        [sqliteStatement bindInt64:_pk atIndex:1];
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
         [sqliteStatement bindText:value atIndex:3];
         

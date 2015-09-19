@@ -61,10 +61,10 @@
         
         long long rowId = [_sqliteConnection last_insert_rowid];
         
-        NSString* path = [NTIntegerEncoder base64Encode:rowId];
+        NSString* path = [NTIntegerEncoder base64EncodeLongLong:rowId];
         Log_debugString( path );
         
-        NTNode* answer = [[NTNode alloc] initWithContext:self pk:rowId parentPkPath:path];
+        NTNode* answer = [[NTNode alloc] initWithContext:self pk:@(rowId) parentPk:nil parentPkPath:nil];
         return answer;
         
     }
@@ -102,7 +102,7 @@
 // can return nil if 'createIfNeeded' is false */
 -(NTNode*)getRootWithKey:(NSString*)key createIfNeeded:(bool)createIfNeeded {
     
-    NSString* sql = @"select pk from node where edge_name = ? and root_pk is NULL";
+    NSString* sql = @"select pk from node where edge_name = ? and parent_pk is NULL";
     
     NTSqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
     
@@ -112,10 +112,10 @@
         int resultCode = [sqliteStatement step];
         if( SQLITE_ROW == resultCode ) {
             long long pk = [sqliteStatement getInt64AtColumn:0];
-            NSString* path = [NTIntegerEncoder base64Encode:pk];
+            NSString* path = [NTIntegerEncoder base64EncodeLongLong:pk];
             Log_debugString( path );
             
-            NTNode* answer = [[NTNode alloc] initWithContext:self pk:pk parentPkPath:path];
+            NTNode* answer = [[NTNode alloc] initWithContext:self pk:@(pk) parentPk:nil parentPkPath:nil];
             
             return answer;
             

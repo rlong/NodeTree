@@ -1,8 +1,8 @@
 //
-//  NTJSONWriterIntegrationTest.m
+//  NTJSONReaderIntegrationTest.m
 //  NodeTree
 //
-//  Created by rlong on 12/09/2015.
+//  Created by rlong on 19/09/2015.
 //  Copyright (c) 2015 com.hexbeerium. All rights reserved.
 //
 
@@ -12,29 +12,17 @@
 
 #import "FALog.h"
 
-#import "JBBaseException.h"
-#import "JBExceptionHelper.h"
-
+#import "NTJSONReader.h"
 #import "NTJSONWriter.h"
-#import "NTTestContext.h"
 #import "NTNodeContext.h"
+#import "NTNodeIterator.h"
+#import "NTTestContext.h"
 
-
-@interface NTJSONWriterIntegrationTest : XCTestCase
+@interface NTJSONReaderIntegrationTest : XCTestCase
 
 @end
 
-@implementation NTJSONWriterIntegrationTest
-
-
-+ (void)initialize {
-    
-    srand((unsigned int)clock());
-
-}
-
-
-
+@implementation NTJSONReaderIntegrationTest
 
 - (void)setUp {
     [super setUp];
@@ -60,22 +48,33 @@
 
 
 
--(void)testWriteVLCPlayingStatus {
+- (NSString*)setupTestDataWithContext:(NTNodeContext*)nodeContext {
+    
+    NSString* rootNodeName = @"[NTJSONReaderIntegrationTest setupTestDataWithContext:]";
+    
+    NTNode* node = [nodeContext getRootWithKey:rootNodeName];
+    if( nil != node ) {
+        Log_debug( @"nil != node" );
+        return rootNodeName; // nothing to do
+    }
+    
+
+    ///////////////////////////////////////////////////////////////////////
     
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json" ofType:nil];
     XCTAssertNotNil( path );
-    
+
     
     NSData* jsonData = nil;
     {
         NSDataReadingOptions options = 0;
         NSError* error = nil;
         jsonData = [NSData dataWithContentsOfFile:path options:options error:&error];
-
+        
         XCTAssertNil( error );
         XCTAssertNotNil( jsonData );
-    
+        
     }
     
     NSDictionary* json = nil;
@@ -83,22 +82,41 @@
         NSJSONReadingOptions options = NSJSONReadingMutableContainers;
         NSError* error = nil;
         json = [NSJSONSerialization JSONObjectWithData:jsonData options:options error:&error];
-
+        
         XCTAssertNil( error );
         XCTAssertNotNil( json );
-
+        
     }
+
+    
+    NTNode* rootNode = [nodeContext addRootWithKey:rootNodeName];
+    [NTJSONWriter addJSONDictionary:json toNode:rootNode];
+    
+    return rootNodeName;
+
+
+    
+    
+}
+
+- (void)testIterateOverDatabase {
+    
+    Log_enteredMethod();
     
     NTTestContext* testContext = [NTTestContext defaultContext];
     NTNodeContext* nodeContext = [testContext openContext];
     
     [nodeContext begin];
     {
-        NSString* rootName = [NSString stringWithFormat:@"NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.%d", rand()];
-        Log_debugString( rootName );
-
-        NTNode* rootNode = [nodeContext addRootWithKey:rootName];
-        [NTJSONWriter addJSONDictionary:json toNode:rootNode];
+        
+        NSString* rootNodeName = [self setupTestDataWithContext:nodeContext];
+        NTNode* rootNode = [nodeContext getRootWithKey:rootNodeName];
+        XCTAssertNotNil( rootNode );
+        
+        NSDictionary* rootDictionary = [NTJSONReader readJSONDictionaryForNode:rootNode];
+        
+        Log_debugInt( [rootDictionary count] );
+        XCTAssertTrue( 0 != [rootDictionary count] );
         
     }
     [nodeContext commit];
@@ -106,11 +124,6 @@
     [testContext closeContext:nodeContext];
 
     
-    
-    
-    
-    
-
     
 }
 

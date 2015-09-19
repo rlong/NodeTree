@@ -28,7 +28,7 @@ static NSString* BASE64_DIGITS[] = {
 // ^^^ http://tools.ietf.org/html/rfc4648#section-5
 
 
-+(NSString*)base64Encode:(long long)integer {
++(NSString*)base64EncodeLongLong:(long long)integer {
 
 
     NSMutableString* answer = [[NSMutableString alloc] init];
@@ -46,6 +46,11 @@ static NSString* BASE64_DIGITS[] = {
     
     return answer;
     
+}
+
++(NSString*)base64EncodeNumber:(NSNumber*)number;
+{
+    return [self base64EncodeLongLong:[number longLongValue]];
 }
 
 

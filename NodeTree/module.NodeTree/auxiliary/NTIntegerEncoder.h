@@ -10,6 +10,8 @@
 
 @interface NTIntegerEncoder : NSObject
 
-+(NSString*)base64Encode:(long long)integer;
++(NSString*)base64EncodeLongLong:(long long)integer;
++(NSString*)base64EncodeNumber:(NSNumber*)number;
+
 
 @end
