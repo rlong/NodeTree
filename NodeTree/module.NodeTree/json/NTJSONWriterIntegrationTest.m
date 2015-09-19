@@ -10,8 +10,9 @@
 #import <XCTest/XCTest.h>
 
 
+#import "FALog.h"
+
 #import "JBBaseException.h"
-#import "JBLog.h"
 #import "JBExceptionHelper.h"
 
 #import "NTJSONWriter.h"

@@ -7,8 +7,7 @@
 //
 //
 
-#import "JBLog.h"
-#import "JBMemoryModel.h"
+#import "FALog.h"
 
 #import "NTIntegerEncoder.h"
 #import "NTNode.h"
@@ -66,8 +65,6 @@
         Log_debugString( path );
         
         NTNode* answer = [[NTNode alloc] initWithContext:self pk:rowId parentPkPath:path];
-        JBAutorelease( answer );
-        
         return answer;
         
     }
@@ -119,7 +116,6 @@
             Log_debugString( path );
             
             NTNode* answer = [[NTNode alloc] initWithContext:self pk:pk parentPkPath:path];
-            JBAutorelease( answer );
             
             return answer;
             

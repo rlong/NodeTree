@@ -6,9 +6,9 @@
 //
 //
 
+#import "FALog.h"
+
 #import "JBBaseException.h"
-#import "JBLog.h"
-#import "JBMemoryModel.h"
 
 
 #import "NTSqliteStatement.h"
@@ -143,7 +143,6 @@
         Log_warn( @"NULL != _statement" );
         [self finalize];
     }
-    JBSuperDealloc();
 	
 }
 

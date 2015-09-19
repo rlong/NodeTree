@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 HexBeerium. All rights reserved.
 //
 
-#import "JBMemoryModel.h"
 #import "NTColumnDescriptor.h"
 
 
@@ -57,7 +56,6 @@
 	
 	[self setName:nil];
 	
-    JBSuperDealloc();
 	
 }
 

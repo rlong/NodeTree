@@ -7,9 +7,9 @@
 //
 
 
+#import "FALog.h"
+
 #import "JBBaseException.h"
-#import "JBLog.h"
-#import "JBMemoryModel.h"
 
 
 #import "NTIntegerEncoder.h"
@@ -204,7 +204,6 @@
     Log_debugString( path );
     
     NTNode* answer = [[NTNode alloc] initWithContext:_context pk:rowId parentPkPath:path];
-    JBAutorelease( answer );
     
     return answer;
     

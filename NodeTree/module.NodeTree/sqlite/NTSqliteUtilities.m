@@ -7,9 +7,9 @@
 //
 
 
+#import "FALog.h"
+
 #import "JBBaseException.h"
-#import "JBLog.h"
-#import "JBMemoryModel.h"
 
 
 #import "NTSqliteUtilities.h"
@@ -33,7 +33,6 @@
             technicalError = [NSString stringWithFormat:@"SQLITE_OK != resultCode; resultCode = %d; errmsg = '%s'",resultCode, errmsg];
         }
         BaseException* e = [[JBBaseException alloc] initWithOriginator:self line:__LINE__ faultMessage:technicalError];
-        JBAutorelease( e );
         
         @throw e;
         

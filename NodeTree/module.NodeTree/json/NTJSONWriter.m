@@ -7,14 +7,14 @@
 //
 
 
-#import "JBLog.h"
+#import "FALog.h"
 
 #import "NTJSONWriter.h"
 #import "NTNode.h"
 
 
-#define TYPE_ID_OBJECT 0x7b7d
-#define TYPE_ID_ARRAY 0x5b5d
+// 0x5b '['
+#define TYPE_ID_ARRAY 0x5b
 
 
 @implementation NTJSONWriter {
@@ -42,7 +42,7 @@
     
     if( [blob isKindOfClass:[NSDictionary class]] ) {
         
-        NTNode* child = [node addChildWithKey:key typeId:TYPE_ID_OBJECT];
+        NTNode* child = [node addChildWithKey:key];
         NSDictionary* dictionary = (NSDictionary*)blob;
         [self addJSONDictionary:dictionary toNode:child];
         return;
@@ -118,7 +118,7 @@
 
     if( [blob isKindOfClass:[NSDictionary class]] ) {
         
-        NTNode* child = [node addChildWithIndex:index typeId:TYPE_ID_OBJECT];
+        NTNode* child = [node addChildWithIndex:index];
         NSDictionary* dictionary = (NSDictionary*)blob;
         [self addJSONDictionary:dictionary toNode:child];
         return;

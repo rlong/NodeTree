@@ -7,8 +7,7 @@
 //
 
 
-#import "JBLog.h"
-#import "JBMemoryModel.h"
+#import "FALog.h"
 
 #import "NTSchemaManager.h"
 #import "NTSqliteConnection.h"
@@ -61,7 +60,6 @@
     
     
     NSMutableString* answer = [[NSMutableString alloc] initWithString:@"create table if not exists "];
-    JBAutorelease( answer );
     [answer appendString:[tableDescriptor name]];
     [answer appendString:@"(\n"];
     
@@ -107,7 +105,6 @@
     
 
     NSMutableString* answer = [[NSMutableString alloc] initWithString:@"drop table if exists "];
-    JBAutorelease( answer );
     [answer appendString:[tableDescriptor name]];
     [answer appendString:@";"];
     

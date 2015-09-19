@@ -7,10 +7,10 @@
 //
 
 
+#import "FALog.h"
+
 #import "JBBaseException.h"
 #import "JBFileUtilities.h"
-#import "JBLog.h"
-#import "JBMemoryModel.h"
 
 
 
@@ -71,7 +71,6 @@
         Log_debugString( path );
         
         NTNode* answer = [[NTNode alloc] initWithContext:context pk:rowId parentPkPath:path];
-        JBAutorelease( answer );
         
         return answer;
     
@@ -110,7 +109,6 @@
             Log_debugString( path );
             
             NTNode* answer = [[NTNode alloc] initWithContext:context pk:pk parentPkPath:path];
-            JBAutorelease( answer );
             
             return answer;
             
@@ -157,7 +155,6 @@
 
     NTSqliteConnection* connection = [NTSqliteConnection open:_databasePath];
     NTNodeContext* answer = [[NTNodeContext alloc] initWithSqliteConnection:connection];
-    JBAutorelease( answer );
     
     return answer;
     
@@ -196,7 +193,6 @@
 	
 	[self setDatabasePath:nil];
 	
-    JBSuperDealloc();
 	
 }
 

@@ -1,0 +1,3 @@
+[submodule "submodules/FoundationAnnex"]
+	path = submodules/FoundationAnnex
+	url = https://github.com/rlong/FoundationAnnex

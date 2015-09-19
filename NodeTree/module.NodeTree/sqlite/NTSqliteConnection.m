@@ -6,8 +6,7 @@
 //
 //
 
-#import "JBLog.h"
-#import "JBMemoryModel.h"
+#import "FALog.h"
 
 
 #import "NTSqliteConnection.h"
@@ -83,7 +82,6 @@
     
 
     NTSqliteConnection* answer = [[NTSqliteConnection alloc] initWithConnection:connection];
-    JBAutorelease( answer );
     
     return answer;
     
@@ -100,7 +98,6 @@
 	[NTSqliteUtilities checkResultCodeIsOk:resultCode forConnection:_connection];
     
     NTSqliteStatement* answer = [[NTSqliteStatement alloc] initWithStatement:statement];
-    JBAutorelease( answer );
 
     return answer;
     
@@ -129,7 +126,6 @@
         _connection = NULL;
     }
 
-    JBSuperDealloc();
 }
 
 @end

@@ -6,7 +6,6 @@
 //
 //
 
-#import "JBMemoryModel.h"
 
 
 #import "NTColumnDescriptor.h"
@@ -30,34 +29,27 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
         NSMutableArray* properties = [[NSMutableArray alloc] init];
         {
             NTColumnDescriptor* columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"pk" properties:@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
             
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"parent_pk" properties:@"INTEGER"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"parent_pk_path" properties:@"TEXT"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"type_id" properties:@"INTEGER"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             // ---------------------------------------------------------
 
             [node setProperties:properties];
         }
-        JBRelease( properties );
         
         
         NSMutableArray* constaints = [[NSMutableArray alloc] init];
@@ -66,7 +58,6 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
             
             [node setConstraints:constaints];
         }
-        JBRelease( constaints );
         
         
 
@@ -75,7 +66,6 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
             [indexes addObject:@"CREATE INDEX if not exists node_parent_pk_path ON node ( parent_pk_path );"];
             [node setIndexes:indexes];
         }
-        JBRelease( indexes );
         
     }
     
@@ -87,16 +77,13 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
         {
             
             NTColumnDescriptor* columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"node_pk" properties:@"INTEGER NOT NULL"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
             
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
             
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
             
             
@@ -104,19 +91,15 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
             
             
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"blob_value" properties:@"BLOB"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"boolean_value" properties:@"BOOLEAN"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"integer_value" properties:@"INTEGER"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"real_value" properties:@"REAL"];
-            JBAutorelease( columnDescriptor );
             [properties addObject:columnDescriptor];
 
             columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"string_value" properties:@"TEXT"];
@@ -125,7 +108,6 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
 
             [nodeProperty setProperties:properties];
         }
-        JBRelease( properties );
         
         
         NSMutableArray* constaints = [[NSMutableArray alloc] init];
@@ -134,16 +116,13 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
             
             [nodeProperty setConstraints:constaints];
         }
-        JBRelease( constaints );
 
-        
         
         NSMutableArray* indexes = [[NSMutableArray alloc] init];
         {
             
             [nodeProperty setIndexes:indexes];
         }
-        JBRelease( indexes );
         
     }
 	

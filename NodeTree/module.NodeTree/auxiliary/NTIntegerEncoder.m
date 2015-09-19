@@ -6,7 +6,6 @@
 //
 //
 
-#import "JBMemoryModel.h"
 
 #import "NTIntegerEncoder.h"
 
@@ -33,7 +32,6 @@ static NSString* BASE64_DIGITS[] = {
 
 
     NSMutableString* answer = [[NSMutableString alloc] init];
-    JBAutorelease( answer );
     
     do {
         

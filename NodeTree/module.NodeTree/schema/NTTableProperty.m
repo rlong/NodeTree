@@ -7,7 +7,6 @@
 //
 
 
-#import "JBMemoryModel.h"
 
 #import "NTTableProperty.h"
 
@@ -40,7 +39,6 @@
 	
 	[self setProperty:nil];
 
-    JBSuperDealloc();
 	
 }
 

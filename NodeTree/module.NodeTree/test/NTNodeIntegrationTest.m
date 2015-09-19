@@ -8,8 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "JBLog.h"
-#import "JBMemoryModel.h"
+#import "FALog.h"
 
 
 #import "NTNodeTree.h"
