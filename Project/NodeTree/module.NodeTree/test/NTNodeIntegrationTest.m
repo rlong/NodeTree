@@ -49,7 +49,7 @@
         NTNode* parentNode = [nodeContext addRootWithKey:[self getRootName]];
         NTNode* childNode = [parentNode addChildWithKey:@"child_node"];
         [childNode setString:@"value" forKey:@"string_key"];
-        [childNode setBool:true forKey:@"boolean_key"];
+        [childNode setBool:true withKey:@"boolean_key"];
     }
     [nodeContext commit];
 

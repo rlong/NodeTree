@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0939271BBF7467005AF14E /* FALog.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0939231BBF745B005AF14E /* FALog.m */; };
+		AE0939281BBF880E005AF14E /* ErrorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */; };
+		AE0939291BBF8817005AF14E /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09391C1BBF745B005AF14E /* ErrorHandler.swift */; };
 		AE2AE56B1BA3BC8F003C35F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56A1BA3BC8F003C35F8 /* main.m */; };
 		AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56D1BA3BC8F003C35F8 /* AppDelegate.m */; };
 		AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5701BA3BC8F003C35F8 /* ViewController.m */; };
@@ -39,7 +42,6 @@
 		AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */; };
 		AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
 		AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
-		AEF03ABF1BAD2AAB00923748 /* FALog.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ABB1BAD2A9A00923748 /* FALog.m */; };
 		AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC11BAD302200923748 /* NTNodeIterator.m */; };
 		AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC41BAD433900923748 /* NTJSONReader.m */; };
 		AEF03AC71BAD434B00923748 /* NTJSONReaderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */; };
@@ -58,6 +60,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuilder.swift; sourceTree = "<group>"; };
+		AE09391C1BBF745B005AF14E /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		AE09391D1BBF745B005AF14E /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		AE09391E1BBF745B005AF14E /* FoundationAnnex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationAnnex.h; sourceTree = "<group>"; };
+		AE09391F1BBF745B005AF14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE0939201BBF745B005AF14E /* InputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamHelper.swift; sourceTree = "<group>"; };
+		AE0939221BBF745B005AF14E /* FALog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FALog.h; sourceTree = "<group>"; };
+		AE0939231BBF745B005AF14E /* FALog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FALog.m; sourceTree = "<group>"; };
+		AE0939241BBF745B005AF14E /* NumericUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
+		AE0939251BBF745B005AF14E /* OutputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamHelper.swift; sourceTree = "<group>"; };
+		AE0939261BBF745B005AF14E /* StreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamHelper.swift; sourceTree = "<group>"; };
+		AE09392A1BBF8A1D005AF14E /* ErrorBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorBuilder.h; sourceTree = "<group>"; };
 		AE2AE5661BA3BC8F003C35F8 /* NodeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2AE5691BA3BC8F003C35F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE2AE56A1BA3BC8F003C35F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,17 +129,6 @@
 		AEB961851A36C61D00A363E8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		AEF03A881BAD24D500923748 /* FoundationAnnex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationAnnex.framework; path = ../submodules/FoundationAnnex/build/Debug/FoundationAnnex.framework; sourceTree = "<group>"; };
 		AEF03A8A1BAD254200923748 /* FoundationAnnex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationAnnex.framework; path = ../submodules/FoundationAnnex/build/Debug/FoundationAnnex.framework; sourceTree = "<group>"; };
-		AEF03AB31BAD2A9A00923748 /* ErrorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuilder.swift; sourceTree = "<group>"; };
-		AEF03AB41BAD2A9A00923748 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		AEF03AB51BAD2A9A00923748 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
-		AEF03AB61BAD2A9A00923748 /* FoundationAnnex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationAnnex.h; sourceTree = "<group>"; };
-		AEF03AB71BAD2A9A00923748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEF03AB81BAD2A9A00923748 /* InputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamHelper.swift; sourceTree = "<group>"; };
-		AEF03ABA1BAD2A9A00923748 /* FALog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FALog.h; sourceTree = "<group>"; };
-		AEF03ABB1BAD2A9A00923748 /* FALog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FALog.m; sourceTree = "<group>"; };
-		AEF03ABC1BAD2A9A00923748 /* NumericUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
-		AEF03ABD1BAD2A9A00923748 /* OutputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamHelper.swift; sourceTree = "<group>"; };
-		AEF03ABE1BAD2A9A00923748 /* StreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamHelper.swift; sourceTree = "<group>"; };
 		AEF03AC01BAD302200923748 /* NTNodeIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeIterator.h; sourceTree = "<group>"; };
 		AEF03AC11BAD302200923748 /* NTNodeIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeIterator.m; sourceTree = "<group>"; };
 		AEF03AC31BAD433900923748 /* NTJSONReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTJSONReader.h; sourceTree = "<group>"; };
@@ -157,6 +160,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE0939161BBF73E1005AF14E /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				AE0939171BBF73EC005AF14E /* CocoaAnnex */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
+		AE0939171BBF73EC005AF14E /* CocoaAnnex */ = {
+			isa = PBXGroup;
+			children = (
+				AE0939181BBF73F6005AF14E /* Project */,
+			);
+			name = CocoaAnnex;
+			sourceTree = "<group>";
+		};
+		AE0939181BBF73F6005AF14E /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				AE09391A1BBF745B005AF14E /* FoundationAnnex */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		AE09391A1BBF745B005AF14E /* FoundationAnnex */ = {
+			isa = PBXGroup;
+			children = (
+				AE09392A1BBF8A1D005AF14E /* ErrorBuilder.h */,
+				AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */,
+				AE09391C1BBF745B005AF14E /* ErrorHandler.swift */,
+				AE09391D1BBF745B005AF14E /* ErrorHelper.swift */,
+				AE09391E1BBF745B005AF14E /* FoundationAnnex.h */,
+				AE09391F1BBF745B005AF14E /* Info.plist */,
+				AE0939201BBF745B005AF14E /* InputStreamHelper.swift */,
+				AE0939211BBF745B005AF14E /* log */,
+				AE0939241BBF745B005AF14E /* NumericUtilities.swift */,
+				AE0939251BBF745B005AF14E /* OutputStreamHelper.swift */,
+				AE0939261BBF745B005AF14E /* StreamHelper.swift */,
+			);
+			name = FoundationAnnex;
+			path = ../Submodules/CocoaAnnex/Project/FoundationAnnex;
+			sourceTree = "<group>";
+		};
+		AE0939211BBF745B005AF14E /* log */ = {
+			isa = PBXGroup;
+			children = (
+				AE0939221BBF745B005AF14E /* FALog.h */,
+				AE0939231BBF745B005AF14E /* FALog.m */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
 		AE2AE5671BA3BC8F003C35F8 /* NodeTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,12 +348,12 @@
 		AEB960331A36ABAD00A363E8 = {
 			isa = PBXGroup;
 			children = (
-				AEF03AB21BAD2A9A00923748 /* FoundationAnnex */,
 				AE2AE5AE1BA3CE49003C35F8 /* module.NodeTree */,
 				AE2AE5671BA3BC8F003C35F8 /* NodeTree */,
 				AE2AE5811BA3BC8F003C35F8 /* NodeTreeTests */,
 				AEB9608F1A36ABF500A363E8 /* Frameworks */,
 				AEB9603D1A36ABAD00A363E8 /* Products */,
+				AE0939161BBF73E1005AF14E /* Submodules */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,33 +379,6 @@
 				AEB960B01A36ACAA00A363E8 /* libjsonbroker.library.ios.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AEF03AB21BAD2A9A00923748 /* FoundationAnnex */ = {
-			isa = PBXGroup;
-			children = (
-				AEF03AB31BAD2A9A00923748 /* ErrorBuilder.swift */,
-				AEF03AB41BAD2A9A00923748 /* ErrorHandler.swift */,
-				AEF03AB51BAD2A9A00923748 /* ErrorHelper.swift */,
-				AEF03AB61BAD2A9A00923748 /* FoundationAnnex.h */,
-				AEF03AB71BAD2A9A00923748 /* Info.plist */,
-				AEF03AB81BAD2A9A00923748 /* InputStreamHelper.swift */,
-				AEF03AB91BAD2A9A00923748 /* log */,
-				AEF03ABC1BAD2A9A00923748 /* NumericUtilities.swift */,
-				AEF03ABD1BAD2A9A00923748 /* OutputStreamHelper.swift */,
-				AEF03ABE1BAD2A9A00923748 /* StreamHelper.swift */,
-			);
-			name = FoundationAnnex;
-			path = ../submodules/FoundationAnnex/FoundationAnnex;
-			sourceTree = "<group>";
-		};
-		AEF03AB91BAD2A9A00923748 /* log */ = {
-			isa = PBXGroup;
-			children = (
-				AEF03ABA1BAD2A9A00923748 /* FALog.h */,
-				AEF03ABB1BAD2A9A00923748 /* FALog.m */,
-			);
-			path = log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,15 +483,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE0939271BBF7467005AF14E /* FALog.m in Sources */,
 				AE2AE5DA1BA3CE49003C35F8 /* NTSchemaManager.m in Sources */,
 				AE2AE5D81BA3CE49003C35F8 /* NTColumnDescriptor.m in Sources */,
 				AE2AE62A1BA3D3A2003C35F8 /* NTJSONWriter.m in Sources */,
 				AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */,
 				AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */,
-				AEF03ABF1BAD2AAB00923748 /* FALog.m in Sources */,
 				AE2AE5D51BA3CE49003C35F8 /* NTNode.m in Sources */,
 				AE2AE5DF1BA3CE49003C35F8 /* NTSqliteUtilities.m in Sources */,
+				AE0939281BBF880E005AF14E /* ErrorBuilder.swift in Sources */,
 				AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */,
+				AE0939291BBF8817005AF14E /* ErrorHandler.swift in Sources */,
 				AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */,
 				AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */,
 				AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */,
@@ -641,7 +671,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "user-headers/**";
+				USER_HEADER_SEARCH_PATHS = "../Submodules/**";
 			};
 			name = Debug;
 		};
@@ -677,7 +707,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "user-headers/**";
+				USER_HEADER_SEARCH_PATHS = "../Submodules/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -20,17 +20,22 @@
 -(void)bindDouble:(double)value atIndex:(int)index;
 -(void)bindInt:(int)value atIndex:(int)index;
 -(void)bindInt64:(sqlite3_int64)value atIndex:(int)index;
+- (void)bindNullAtIndex:(int)index;
+
+// will accept nil
+-(void)bindNumber:(NSNumber*)value atIndex:(int)index;
+
+// will accept nil
 -(void)bindText:(NSString*)text atIndex:(int)index;
 
 -(void)finalize;
 
--(long long)getInt64AtColumn:(int)columnIndex;
 
+- (BOOL)getBoolAtColumn:(int)columnIndex error:(NSError**)error;
+- (long long)getInt64AtColumn:(int)columnIndex;
 - (NSNumber*)getNumberAtColumn:(int)columnIndex defaultTo:(NSNumber*)defaultValue;
-
 - (NSString*)getStringAtColumn:(int)columnIndex defaultTo:(NSString*)defaultValue;
-
--(NSString*)getTextAtColumn:(int)columnIndex;
+- (NSString*)getTextAtColumn:(int)columnIndex;
 
 -(int)step;
 

@@ -67,7 +67,7 @@
             
             // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
             
-            [node setBool:[number boolValue] forKey:key];
+            [node setBool:[number boolValue] withKey:key];
             return;
         }
         

@@ -1,3 +1,12 @@
-[submodule "submodules/FoundationAnnex"]
-	path = submodules/FoundationAnnex
-	url = https://github.com/rlong/FoundationAnnex
+[submodule "Submodules/jsonbroker.objective_c"]
+	path = Submodules/jsonbroker.objective_c
+	url = https://github.com/rlong/jsonbroker.objective_c.git
+[submodule "Submodules/CocoaAnnex"]
+	path = Submodules/CocoaAnnex
+	url = https://github.com/rlong/CocoaAnnex.git
+[submodule "Project/Submodules/CocoaAnnex"]
+	path = Project/Submodules/CocoaAnnex
+	url = https://github.com/rlong/CocoaAnnex.git
+[submodule "Project/Submodules/jsonbroker.objective_c"]
+	path = Project/Submodules/jsonbroker.objective_c
+	url = https://github.com/rlong/jsonbroker.objective_c.git
