@@ -46,12 +46,101 @@
     [nodeContext begin];
     {
         NTNode* node = [nodeContext addRootWithKey:[self getRootName]];
-        [node setInt:1 forKey:@"integer_key"];
+        [node setInteger:1 withKey:@"integer_key"];
     }
     [nodeContext commit];
 
     [testContext closeContext:nodeContext];
 
+    
+}
+
+
+- (void)testGetInteger;
+{
+    
+    NTTestContext* testContext = [NTTestContext defaultContext];
+    NTNodeContext* nodeContext = [testContext openContext];
+    
+    
+    NSString* rootName = [self getRootName];
+    
+    // write
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext addRootWithKey:rootName];
+        [node setInteger:42 withKey:@"testGetInteger"];
+    }
+    [nodeContext commit];
+    
+    // read
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext getRootWithKey:rootName];
+        XCTAssertNotNil( node );
+        int64_t actualValue = [node getIntegerWithKey:@"testGetInteger" atIndex:nil defaultValue:0];
+        XCTAssertTrue( 42 == actualValue );
+    }
+    [nodeContext commit];
+    
+    [testContext closeContext:nodeContext];
+    
+    
+}
+
+
+- (void)testRemoveInteger;
+{
+    
+    NTTestContext* testContext = [NTTestContext defaultContext];
+    NTNodeContext* nodeContext = [testContext openContext];
+    
+    
+    NSString* rootName = [self getRootName];
+    
+    // write
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext addRootWithKey:rootName];
+        [node setInteger:42 withKey:@"testRemoveInteger"];
+    }
+    [nodeContext commit];
+    
+    
+    // read
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext getRootWithKey:rootName];
+        XCTAssertNotNil( node );
+        int64_t actualValue = [node getIntegerWithKey:@"testRemoveInteger" atIndex:nil defaultValue:0];
+        XCTAssertTrue( 42 == actualValue );
+    }
+    [nodeContext commit];
+    
+    
+    // remove
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext getRootWithKey:rootName];
+        XCTAssertNotNil( node );
+        [node removeIntegerWithKey:@"testRemoveInteger"];
+    }
+    [nodeContext commit];
+    
+    // read, expect to fall back on the default value
+    [nodeContext begin];
+    {
+        NTNode* node = [nodeContext getRootWithKey:rootName];
+        XCTAssertNotNil( node );
+        int64_t actualValue = [node getIntegerWithKey:@"testRemoveInteger" atIndex:nil defaultValue:0];
+        XCTAssertTrue( 0 == actualValue );
+    }
+    [nodeContext commit];
+    
+    
+    
+    [testContext closeContext:nodeContext];
+    
     
 }
 

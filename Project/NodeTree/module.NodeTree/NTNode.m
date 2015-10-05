@@ -252,7 +252,7 @@
         } else if( SQLITE_DONE == resultCode ) {
             
             *error = ErrorBuilder_errorForFailure( @"SQLITE_DONE == resultCode" );
-            return nil;
+            return 0;
         }
     }
     @finally {
@@ -276,7 +276,7 @@
 }
 
 
-- (void)removeBoolWithKeyAtIndex:(sqlite_int64)index;
+- (void)removeBoolWithKeyAtIndex:(int64_t)index;
 {
     [self removeProperyAtIndex:index];
 }
@@ -347,42 +347,117 @@
 
 
 
--(void)setInt:(int)value atIndex:(sqlite_int64)index;
-{
+
+
+-(int64_t)getIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index error:(NSError**)error {
     
     NTSqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, integer_value) values(?,null,?,?)";
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
-    
-    @try {
-        
-        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
-        [sqliteStatement bindInt64:index atIndex:2];
-        [sqliteStatement bindInt:value atIndex:3];
-        
-        [sqliteStatement step];
-        
+    NSString* keyComparator = @"=";
+    if( nil == key ) {
+        keyComparator = @"is";
     }
-    @finally {
-        [sqliteStatement finalize];
+    NSString* indexComparator = @"=";
+    if( nil == index ) {
+        indexComparator = @"is";
     }
     
-}
-
-
--(void)setInt:(int)value forKey:(NSString*)key {
+    NSString *sql = [NSString stringWithFormat:@"select integer_value from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
     
-    NTSqliteConnection* connection = [_context sqliteConnection];
-    
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, integer_value) values(?,?,null,?)";
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    NTSqliteStatement *sqliteStatement = [connection prepare:sql];
     
     @try {
         
         [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
         [sqliteStatement bindText:key atIndex:2];
-        [sqliteStatement bindInt:value atIndex:3];
+        [sqliteStatement bindNumber:index atIndex:3];
+        
+        int resultCode = [sqliteStatement step];
+        if( SQLITE_ROW == resultCode ) {
+            
+            
+            int64_t answer = [sqliteStatement getIntegerAtColumn:0 error:error];
+            
+            return answer;
+            
+        } else if( SQLITE_DONE == resultCode ) {
+            
+            *error = ErrorBuilder_errorForFailure( @"SQLITE_DONE == resultCode" );
+            return 0;
+        }
+    }
+    @finally {
+        [sqliteStatement finalize];
+    }
+    
+}
+
+-(int64_t)getIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index defaultValue:(int64_t)defaultValue;
+{
+    
+    NSError* error = nil;
+    int64_t answer = [self getIntegerWithKey:key atIndex:index error:&error];
+    
+    if( nil != error ) {
+        return defaultValue;
+    }
+    
+    return  answer;
+    
+}
+
+
+
+
+- (void)removeIntegerWithKeyAtIndex:(int64_t)index;
+{
+    [self removeProperyAtIndex:index];
+}
+
+- (void)removeIntegerWithKey:(NSString*)key;
+{
+    [self removeProperyWithKey:key];
+}
+
+- (void)removeIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index;
+{
+    [self removeProperyWithKey:key atIndex:index];
+}
+
+
+
+
+-(void)setInteger:(int64_t)value atIndex:(int64_t)index;
+{
+    
+    [self setInteger:value withKey:nil atIndex:@(index)];
+
+}
+
+
+-(void)setInteger:(int64_t)value withKey:(NSString*)key {
+    
+    [self setInteger:value withKey:key atIndex:nil];
+
+    
+}
+
+
+- (void)setInteger:(int64_t)value withKey:(NSString*)key atIndex:(NSNumber*)index {
+    
+    
+    
+    
+    NTSqliteConnection* connection = [_context sqliteConnection];
+    
+    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, boolean_value, integer_value, real_value, string_value) values(?,?,?, null,?,null,null)";
+    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    
+    @try {
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:key atIndex:2];
+        [sqliteStatement bindNumber:index atIndex:3];
+        [sqliteStatement bindInteger:value atIndex:4];
         
         [sqliteStatement step];
         
@@ -390,8 +465,10 @@
     @finally {
         [sqliteStatement finalize];
     }
+
     
 }
+
 
 #pragma mark - null
 
@@ -468,7 +545,9 @@
     
 }
 
+
 -(void)setReal:(double)value forKey:(NSString*)key {
+
     
     NTSqliteConnection* connection = [_context sqliteConnection];
     
@@ -487,7 +566,6 @@
     @finally {
         [sqliteStatement finalize];
     }
-    
     
 }
 
@@ -604,7 +682,7 @@
 
 #pragma mark - remove property
 
-- (void)removeProperyAtIndex:(sqlite3_int64)index;
+- (void)removeProperyAtIndex:(int64_t)index;
 {
     [self removeBoolWithKey:nil atIndex:@(index)];
     

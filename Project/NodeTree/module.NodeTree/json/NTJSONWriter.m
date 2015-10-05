@@ -84,7 +84,7 @@
                 [node setReal:[number doubleValue] forKey:key];
                 return;
             default:
-                [node setInt:[number intValue] forKey:key];
+                [node setInteger:[number intValue] withKey:key];
                 return;
         }
     }
@@ -158,7 +158,7 @@
                 [node setReal:[number doubleValue] atIndex:index];
                 return;
             default:
-                [node setInt:[number intValue] atIndex:index];
+                [node setInteger:[number intValue] atIndex:index];
                 return;
         }
     }

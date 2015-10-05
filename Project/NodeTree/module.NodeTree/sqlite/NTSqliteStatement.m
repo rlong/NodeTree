@@ -56,6 +56,19 @@
     
 }
 
+-(void)bindInteger:(int64_t)value atIndex:(int)index;
+{
+    
+    // vvv http://www.sqlite.org/c3ref/bind_blob.html
+    int resultCode = sqlite3_bind_int64( _statement, index, value );
+    // ^^^ http://www.sqlite.org/c3ref/bind_blob.html
+    [NTSqliteUtilities checkResultCodeIsOk:resultCode forStatement:_statement];
+    
+    
+}
+
+
+
 - (void)bindNullAtIndex:(int)index;
 {
     
@@ -152,6 +165,25 @@
     
     
 }
+
+
+- (int64_t)getIntegerAtColumn:(int)columnIndex error:(NSError**)error;
+{
+
+    int columnType = sqlite3_column_type( _statement, columnIndex );
+    
+    if( SQLITE_INTEGER != columnType ) {
+        
+        *error = ErrorBuilder_errorForFailure( @"SQLITE_INTEGER != columnType" );
+        return false;
+        
+    }
+    
+    return sqlite3_column_int64( _statement, columnIndex);
+
+}
+
+
 
 - (NSNumber*)getNumberAtColumn:(int)columnIndex defaultTo:(NSNumber*)defaultValue;
 {

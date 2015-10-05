@@ -18,8 +18,11 @@
 }
 
 -(void)bindDouble:(double)value atIndex:(int)index;
+
 -(void)bindInt:(int)value atIndex:(int)index;
 -(void)bindInt64:(sqlite3_int64)value atIndex:(int)index;
+-(void)bindInteger:(int64_t)value atIndex:(int)index;
+
 - (void)bindNullAtIndex:(int)index;
 
 // will accept nil
@@ -32,7 +35,10 @@
 
 
 - (BOOL)getBoolAtColumn:(int)columnIndex error:(NSError**)error;
-- (long long)getInt64AtColumn:(int)columnIndex;
+
+- (int64_t)getInt64AtColumn:(int)columnIndex;
+- (int64_t)getIntegerAtColumn:(int)columnIndex error:(NSError**)error;
+
 - (NSNumber*)getNumberAtColumn:(int)columnIndex defaultTo:(NSNumber*)defaultValue;
 - (NSString*)getStringAtColumn:(int)columnIndex defaultTo:(NSString*)defaultValue;
 - (NSString*)getTextAtColumn:(int)columnIndex;

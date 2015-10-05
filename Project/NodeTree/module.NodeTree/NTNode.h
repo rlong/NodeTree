@@ -52,23 +52,30 @@
 
 -(BOOL)getBoolWithKey:(NSString*)key atIndex:(NSNumber*)index defaultValue:(BOOL)defaultValue;
 
-- (void)removeBoolWithKeyAtIndex:(sqlite_int64)index;
+- (void)removeBoolWithKeyAtIndex:(int64_t)index;
 - (void)removeBoolWithKey:(NSString*)key;
 - (void)removeBoolWithKey:(NSString*)key atIndex:(NSNumber*)index;
 
-- (void)setBool:(BOOL)value atIndex:(sqlite_int64)index;
+- (void)setBool:(BOOL)value atIndex:(int64_t)index;
 - (void)setBool:(BOOL)value withKey:(NSString*)key;
 - (void)setBool:(BOOL)value withKey:(NSString*)key atIndex:(NSNumber*)index;
 
 
 #pragma mark - integer
 
-- (void)setInt:(int)value atIndex:(sqlite_int64)index;
-- (void)setInt:(int)value forKey:(NSString*)key;
+-(int64_t)getIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index defaultValue:(int64_t)defaultValue;
+
+- (void)removeIntegerWithKeyAtIndex:(int64_t)index;
+- (void)removeIntegerWithKey:(NSString*)key;
+- (void)removeIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index;
+
+
+- (void)setInteger:(int64_t)value atIndex:(int64_t)index;
+- (void)setInteger:(int64_t)value withKey:(NSString*)key;
+- (void)setInteger:(int64_t)value withKey:(NSString*)key atIndex:(NSNumber*)index;
 
 
 #pragma mark - null
-
 
 - (void)setNullAtIndex:(sqlite_int64)index;
 - (void)setNullForKey:(NSString*)key;
