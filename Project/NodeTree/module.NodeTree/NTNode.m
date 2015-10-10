@@ -218,46 +218,26 @@
 
 
 
+
 -(BOOL)getBoolWithKey:(NSString*)key atIndex:(NSNumber*)index error:(NSError**)error {
     
-    NTSqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* keyComparator = @"=";
-    if( nil == key ) {
-        keyComparator = @"is";
-    }
-    NSString* indexComparator = @"=";
-    if( nil == index ) {
-        indexComparator = @"is";
+    NSNumber* answer = nil;
+    
+    [self getPropertyWithKey:key atIndex:index booleanValue:&answer integerValue:nil realValue:nil stringValue:nil error:error];
+    
+    if( nil != *error ) {
+        return false;
     }
     
-    NSString *sql = [NSString stringWithFormat:@"select boolean_value from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
-    
-    NTSqliteStatement *sqliteStatement = [connection prepare:sql];
-    
-    @try {
+    if( nil == answer ) {
         
-        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
-        [sqliteStatement bindText:key atIndex:2];
-        [sqliteStatement bindNumber:index atIndex:3];
         
-        int resultCode = [sqliteStatement step];
-        if( SQLITE_ROW == resultCode ) {
-            
-            
-            BOOL answer = [sqliteStatement getBoolAtColumn:0 error:error];
-            
-            return answer;
-            
-        } else if( SQLITE_DONE == resultCode ) {
-            
-            *error = ErrorBuilder_errorForFailure( @"SQLITE_DONE == resultCode" );
-            return 0;
-        }
+        *error = ErrorBuilder_errorForFailure( @"nil == answer" );
+        return false;
     }
-    @finally {
-        [sqliteStatement finalize];
-    }
+    
+    return [answer boolValue];
     
 }
 
@@ -314,28 +294,7 @@
 -(void)setBool:(BOOL)value withKey:(NSString*)key atIndex:(NSNumber*)index;
 {
 
-    int intValue = 0;
-    if( value ) {
-        intValue = 1;
-    }
-    
-    NTSqliteConnection* connection = [_context sqliteConnection];
-    
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, boolean_value, integer_value, real_value, string_value) values(?,?,?, ?,null,null,null)";
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
-    
-    @try {
-        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
-        [sqliteStatement bindText:key atIndex:2];
-        [sqliteStatement bindNumber:index atIndex:3];
-        [sqliteStatement bindInt:intValue atIndex:4];
-        
-        [sqliteStatement step];
-        
-    }
-    @finally {
-        [sqliteStatement finalize];
-    }
+    [self insertOrReplacePropertyWithKey:key atIndex:index booleanValue:@(value) integerValue:nil realValue:nil stringValue:nil];
 
 }
 
@@ -351,44 +310,24 @@
 
 -(int64_t)getIntegerWithKey:(NSString*)key atIndex:(NSNumber*)index error:(NSError**)error {
     
-    NTSqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* keyComparator = @"=";
-    if( nil == key ) {
-        keyComparator = @"is";
-    }
-    NSString* indexComparator = @"=";
-    if( nil == index ) {
-        indexComparator = @"is";
+    NSNumber* answer = nil;
+    
+    [self getPropertyWithKey:key atIndex:index booleanValue:nil integerValue:&answer realValue:nil stringValue:nil error:error];
+    
+    if( nil != *error ) {
+        return false;
     }
     
-    NSString *sql = [NSString stringWithFormat:@"select integer_value from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
-    
-    NTSqliteStatement *sqliteStatement = [connection prepare:sql];
-    
-    @try {
+    if( nil == answer ) {
         
-        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
-        [sqliteStatement bindText:key atIndex:2];
-        [sqliteStatement bindNumber:index atIndex:3];
         
-        int resultCode = [sqliteStatement step];
-        if( SQLITE_ROW == resultCode ) {
-            
-            
-            int64_t answer = [sqliteStatement getIntegerAtColumn:0 error:error];
-            
-            return answer;
-            
-        } else if( SQLITE_DONE == resultCode ) {
-            
-            *error = ErrorBuilder_errorForFailure( @"SQLITE_DONE == resultCode" );
-            return 0;
-        }
+        *error = ErrorBuilder_errorForFailure( @"nil == answer" );
+        return false;
     }
-    @finally {
-        [sqliteStatement finalize];
-    }
+    
+    return [answer longLongValue];
+    
     
 }
 
@@ -446,28 +385,123 @@
 - (void)setInteger:(int64_t)value withKey:(NSString*)key atIndex:(NSNumber*)index {
     
     
+    [self insertOrReplacePropertyWithKey:key atIndex:index booleanValue:nil integerValue:@(value) realValue:nil stringValue:nil];
     
-    
-    NTSqliteConnection* connection = [_context sqliteConnection];
-    
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, boolean_value, integer_value, real_value, string_value) values(?,?,?, null,?,null,null)";
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
-    
-    @try {
-        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
-        [sqliteStatement bindText:key atIndex:2];
-        [sqliteStatement bindNumber:index atIndex:3];
-        [sqliteStatement bindInteger:value atIndex:4];
-        
-        [sqliteStatement step];
-        
-    }
-    @finally {
-        [sqliteStatement finalize];
-    }
-
     
 }
+
+
+#pragma mark - number
+
+
+-(NSNumber*)getNumberWithKey:(NSString*)key atIndex:(NSNumber*)index error:(NSError**)error {
+    
+    
+    NSNumber* answer = nil;
+    
+    [self getPropertyWithKey:key atIndex:index booleanValue:&answer integerValue:&answer realValue:&answer stringValue:nil error:error];
+    
+    if( nil != *error ) {
+        return nil;
+    }
+    
+    return answer;
+    
+    
+}
+
+-(NSNumber*)getNumberWithKey:(NSString*)key atIndex:(NSNumber*)index defaultValue:(NSNumber*)defaultValue;
+{
+    
+    NSNumber* answer = nil;
+    NSError* error = nil;
+    
+    answer = [self getNumberWithKey:key atIndex:index error:&error];
+    
+    if( nil != error ) {
+        return nil;
+    }
+    
+    if( nil == answer ) {
+        return defaultValue;
+    }
+    
+    return  answer;
+    
+}
+
+
+- (void)removeNumberWithKeyAtIndex:(int64_t)index;
+{
+    [self removeProperyAtIndex:index];
+}
+
+- (void)removeNumberWithKey:(NSString*)key;
+{
+    [self removeProperyWithKey:key];
+}
+
+- (void)removeNumberWithKey:(NSString*)key atIndex:(NSNumber*)index;
+{
+    [self removeProperyWithKey:key atIndex:index];
+}
+
+
+
+- (void)setNumber:(NSNumber*)number atIndex:(NSNumber*)index;
+{
+    [self setNumber:number withKey:nil atIndex:index];
+
+}
+
+- (void)setNumber:(NSNumber*)number withKey:(NSString*)key;
+{
+    [self setNumber:number withKey:key atIndex:nil];
+    
+}
+
+
+- (void)setNumber:(NSNumber*)number withKey:(NSString*)key atIndex:(NSNumber*)index;
+{
+    
+    NSNumber* booleanValue = nil;
+    NSNumber* integerValue = nil;
+    NSNumber* realValue = nil;
+    
+    if( nil != number ) {
+        
+        const char* objCType = [number objCType];
+        
+        // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+        
+        if (strcmp(objCType, @encode(BOOL)) == 0) {
+            
+            // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+            booleanValue = number;
+        } else {
+            
+            // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+            CFNumberType numberType = CFNumberGetType( (CFNumberRef)number );
+            // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+
+            switch (numberType) {
+                case kCFNumberFloat32Type:
+                case kCFNumberFloat64Type:
+                case kCFNumberFloatType:
+                case kCFNumberDoubleType:
+                case kCFNumberCGFloatType:
+                    realValue = number;
+                default:
+                    integerValue = number;
+            }
+        }
+    }
+    
+    [self insertOrReplacePropertyWithKey:key atIndex:index booleanValue:booleanValue integerValue:integerValue realValue:realValue stringValue:nil];
+    
+}
+
+
 
 
 #pragma mark - null
@@ -680,7 +714,99 @@
 }
 
 
-#pragma mark - remove property
+#pragma mark - property
+
+// returns whether the row was found or not
+-(BOOL)getPropertyWithKey:(NSString*)key atIndex:(NSNumber*)index booleanValue:(NSNumber**)booleanValue integerValue:(NSNumber**)integerValue realValue:(NSNumber**)realValue stringValue:(NSString**)stringValue error:(NSError**)error  {
+    
+    NTSqliteConnection* connection = [_context sqliteConnection];
+    
+    NSString* keyComparator = @"=";
+    if( nil == key ) {
+        keyComparator = @"is";
+    }
+    NSString* indexComparator = @"=";
+    if( nil == index ) {
+        indexComparator = @"is";
+    }
+    
+    NSString *sql = [NSString stringWithFormat:@"select boolean_value, integer_value, real_value, string_value from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
+    
+    NTSqliteStatement *sqliteStatement = [connection prepare:sql];
+    
+    @try {
+        
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:key atIndex:2];
+        [sqliteStatement bindNumber:index atIndex:3];
+        
+        int resultCode = [sqliteStatement step];
+        if( SQLITE_ROW == resultCode ) {
+            
+            
+            if( nil != booleanValue ) {
+                *booleanValue = [sqliteStatement getNumberAtColumn:0 defaultTo:nil];
+            }
+            if( nil != integerValue ) {
+                *integerValue = [sqliteStatement getNumberAtColumn:1 defaultTo:nil];
+            }
+            if( nil != realValue ) {
+                *realValue = [sqliteStatement getNumberAtColumn:2 defaultTo:nil];
+            }
+            if( nil != stringValue ) {
+                *stringValue = [sqliteStatement getStringAtColumn:3 defaultTo:nil];
+            }
+            
+            return true;
+            
+            
+        } else if( SQLITE_DONE == resultCode ) {
+            
+            return false;
+            
+        }
+    }
+    @finally {
+        [sqliteStatement finalize];
+    }
+    
+}
+
+
+
+
+
+
+
+- (void)insertOrReplacePropertyWithKey:(NSString*)key atIndex:(NSNumber*)index booleanValue:(NSNumber*)booleanValue integerValue:(NSNumber*)integerValue realValue:(NSNumber*)realValue stringValue:(NSString*)stringValue;
+{
+    
+    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, boolean_value, integer_value, real_value, string_value) values(?,?,?, ?,?,?,?)";
+    
+    NTSqliteConnection* connection = [_context sqliteConnection];
+    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    
+    @try {
+        
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement bindText:key atIndex:2];
+        [sqliteStatement bindNumber:index atIndex:3];
+        [sqliteStatement bindNumber:booleanValue atIndex:4];
+        [sqliteStatement bindNumber:integerValue atIndex:5];
+        [sqliteStatement bindNumber:realValue atIndex:6];
+        [sqliteStatement bindText:stringValue atIndex:7];
+        
+        [sqliteStatement step];
+        
+    }
+    @finally {
+        [sqliteStatement finalize];
+    }
+    
+    
+}
+
+
 
 - (void)removeProperyAtIndex:(int64_t)index;
 {

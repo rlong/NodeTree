@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE0939271BBF7467005AF14E /* FALog.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0939231BBF745B005AF14E /* FALog.m */; };
-		AE0939281BBF880E005AF14E /* ErrorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */; };
-		AE0939291BBF8817005AF14E /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE09391C1BBF745B005AF14E /* ErrorHandler.swift */; };
 		AE2AE56B1BA3BC8F003C35F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56A1BA3BC8F003C35F8 /* main.m */; };
 		AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE56D1BA3BC8F003C35F8 /* AppDelegate.m */; };
 		AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE5701BA3BC8F003C35F8 /* ViewController.m */; };
@@ -47,6 +44,9 @@
 		AEF03AC71BAD434B00923748 /* NTJSONReaderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */; };
 		AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ACC1BAD597900923748 /* NTNodePropertyIterator.m */; };
 		AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03ACF1BAD59E400923748 /* NTNodeProperty.m */; };
+		AEF9644B1BC8A82E007797FF /* ErrorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF9643F1BC8A819007797FF /* ErrorBuilder.swift */; };
+		AEF9644C1BC8A82E007797FF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF964401BC8A819007797FF /* ErrorHandler.swift */; };
+		AEF9644D1BC8A836007797FF /* FALog.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF964471BC8A819007797FF /* FALog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,18 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuilder.swift; sourceTree = "<group>"; };
-		AE09391C1BBF745B005AF14E /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		AE09391D1BBF745B005AF14E /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
-		AE09391E1BBF745B005AF14E /* FoundationAnnex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationAnnex.h; sourceTree = "<group>"; };
-		AE09391F1BBF745B005AF14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE0939201BBF745B005AF14E /* InputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamHelper.swift; sourceTree = "<group>"; };
-		AE0939221BBF745B005AF14E /* FALog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FALog.h; sourceTree = "<group>"; };
-		AE0939231BBF745B005AF14E /* FALog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FALog.m; sourceTree = "<group>"; };
-		AE0939241BBF745B005AF14E /* NumericUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
-		AE0939251BBF745B005AF14E /* OutputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamHelper.swift; sourceTree = "<group>"; };
-		AE0939261BBF745B005AF14E /* StreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamHelper.swift; sourceTree = "<group>"; };
-		AE09392A1BBF8A1D005AF14E /* ErrorBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorBuilder.h; sourceTree = "<group>"; };
 		AE2AE5661BA3BC8F003C35F8 /* NodeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NodeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2AE5691BA3BC8F003C35F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE2AE56A1BA3BC8F003C35F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -138,6 +126,18 @@
 		AEF03ACC1BAD597900923748 /* NTNodePropertyIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodePropertyIterator.m; sourceTree = "<group>"; };
 		AEF03ACE1BAD59E400923748 /* NTNodeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeProperty.h; sourceTree = "<group>"; };
 		AEF03ACF1BAD59E400923748 /* NTNodeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeProperty.m; sourceTree = "<group>"; };
+		AEF9643E1BC8A819007797FF /* ErrorBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorBuilder.h; sourceTree = "<group>"; };
+		AEF9643F1BC8A819007797FF /* ErrorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBuilder.swift; sourceTree = "<group>"; };
+		AEF964401BC8A819007797FF /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		AEF964411BC8A819007797FF /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		AEF964421BC8A819007797FF /* FoundationAnnex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoundationAnnex.h; sourceTree = "<group>"; };
+		AEF964431BC8A819007797FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF964441BC8A819007797FF /* InputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStreamHelper.swift; sourceTree = "<group>"; };
+		AEF964461BC8A819007797FF /* FALog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FALog.h; sourceTree = "<group>"; };
+		AEF964471BC8A819007797FF /* FALog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FALog.m; sourceTree = "<group>"; };
+		AEF964481BC8A819007797FF /* NumericUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
+		AEF964491BC8A819007797FF /* OutputStreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputStreamHelper.swift; sourceTree = "<group>"; };
+		AEF9644A1BC8A819007797FF /* StreamHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,58 +160,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AE0939161BBF73E1005AF14E /* Submodules */ = {
-			isa = PBXGroup;
-			children = (
-				AE0939171BBF73EC005AF14E /* CocoaAnnex */,
-			);
-			name = Submodules;
-			sourceTree = "<group>";
-		};
-		AE0939171BBF73EC005AF14E /* CocoaAnnex */ = {
-			isa = PBXGroup;
-			children = (
-				AE0939181BBF73F6005AF14E /* Project */,
-			);
-			name = CocoaAnnex;
-			sourceTree = "<group>";
-		};
-		AE0939181BBF73F6005AF14E /* Project */ = {
-			isa = PBXGroup;
-			children = (
-				AE09391A1BBF745B005AF14E /* FoundationAnnex */,
-			);
-			name = Project;
-			sourceTree = "<group>";
-		};
-		AE09391A1BBF745B005AF14E /* FoundationAnnex */ = {
-			isa = PBXGroup;
-			children = (
-				AE09392A1BBF8A1D005AF14E /* ErrorBuilder.h */,
-				AE09391B1BBF745B005AF14E /* ErrorBuilder.swift */,
-				AE09391C1BBF745B005AF14E /* ErrorHandler.swift */,
-				AE09391D1BBF745B005AF14E /* ErrorHelper.swift */,
-				AE09391E1BBF745B005AF14E /* FoundationAnnex.h */,
-				AE09391F1BBF745B005AF14E /* Info.plist */,
-				AE0939201BBF745B005AF14E /* InputStreamHelper.swift */,
-				AE0939211BBF745B005AF14E /* log */,
-				AE0939241BBF745B005AF14E /* NumericUtilities.swift */,
-				AE0939251BBF745B005AF14E /* OutputStreamHelper.swift */,
-				AE0939261BBF745B005AF14E /* StreamHelper.swift */,
-			);
-			name = FoundationAnnex;
-			path = ../Submodules/CocoaAnnex/Project/FoundationAnnex;
-			sourceTree = "<group>";
-		};
-		AE0939211BBF745B005AF14E /* log */ = {
-			isa = PBXGroup;
-			children = (
-				AE0939221BBF745B005AF14E /* FALog.h */,
-				AE0939231BBF745B005AF14E /* FALog.m */,
-			);
-			path = log;
-			sourceTree = "<group>";
-		};
 		AE2AE5671BA3BC8F003C35F8 /* NodeTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +301,7 @@
 				AE2AE5811BA3BC8F003C35F8 /* NodeTreeTests */,
 				AEB9608F1A36ABF500A363E8 /* Frameworks */,
 				AEB9603D1A36ABAD00A363E8 /* Products */,
-				AE0939161BBF73E1005AF14E /* Submodules */,
+				AEF9620B1BC8A77C007797FF /* Submodules */,
 			);
 			sourceTree = "<group>";
 		};
@@ -379,6 +327,58 @@
 				AEB960B01A36ACAA00A363E8 /* libjsonbroker.library.ios.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AEF9620B1BC8A77C007797FF /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9621B1BC8A77C007797FF /* CocoaTouchAnnex */,
+			);
+			name = Submodules;
+			path = ../Submodules;
+			sourceTree = "<group>";
+		};
+		AEF9621B1BC8A77C007797FF /* CocoaTouchAnnex */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9621E1BC8A77C007797FF /* Project */,
+			);
+			path = CocoaTouchAnnex;
+			sourceTree = "<group>";
+		};
+		AEF9621E1BC8A77C007797FF /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9643D1BC8A819007797FF /* CocoaTouchAnnex */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		AEF9643D1BC8A819007797FF /* CocoaTouchAnnex */ = {
+			isa = PBXGroup;
+			children = (
+				AEF9643E1BC8A819007797FF /* ErrorBuilder.h */,
+				AEF9643F1BC8A819007797FF /* ErrorBuilder.swift */,
+				AEF964401BC8A819007797FF /* ErrorHandler.swift */,
+				AEF964411BC8A819007797FF /* ErrorHelper.swift */,
+				AEF964421BC8A819007797FF /* FoundationAnnex.h */,
+				AEF964431BC8A819007797FF /* Info.plist */,
+				AEF964441BC8A819007797FF /* InputStreamHelper.swift */,
+				AEF964451BC8A819007797FF /* log */,
+				AEF964481BC8A819007797FF /* NumericUtilities.swift */,
+				AEF964491BC8A819007797FF /* OutputStreamHelper.swift */,
+				AEF9644A1BC8A819007797FF /* StreamHelper.swift */,
+			);
+			path = CocoaTouchAnnex;
+			sourceTree = "<group>";
+		};
+		AEF964451BC8A819007797FF /* log */ = {
+			isa = PBXGroup;
+			children = (
+				AEF964461BC8A819007797FF /* FALog.h */,
+				AEF964471BC8A819007797FF /* FALog.m */,
+			);
+			path = log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,17 +483,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE0939271BBF7467005AF14E /* FALog.m in Sources */,
 				AE2AE5DA1BA3CE49003C35F8 /* NTSchemaManager.m in Sources */,
 				AE2AE5D81BA3CE49003C35F8 /* NTColumnDescriptor.m in Sources */,
 				AE2AE62A1BA3D3A2003C35F8 /* NTJSONWriter.m in Sources */,
 				AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */,
+				AEF9644D1BC8A836007797FF /* FALog.m in Sources */,
 				AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */,
 				AE2AE5D51BA3CE49003C35F8 /* NTNode.m in Sources */,
 				AE2AE5DF1BA3CE49003C35F8 /* NTSqliteUtilities.m in Sources */,
-				AE0939281BBF880E005AF14E /* ErrorBuilder.swift in Sources */,
 				AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */,
-				AE0939291BBF8817005AF14E /* ErrorHandler.swift in Sources */,
 				AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */,
 				AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */,
 				AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */,
@@ -501,7 +499,9 @@
 				AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */,
 				AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */,
 				AE2AE5D91BA3CE49003C35F8 /* NTNodeTreeSchema.m in Sources */,
+				AEF9644C1BC8A82E007797FF /* ErrorHandler.swift in Sources */,
 				AE2AE5DC1BA3CE49003C35F8 /* NTTableProperty.m in Sources */,
+				AEF9644B1BC8A82E007797FF /* ErrorBuilder.swift in Sources */,
 				AE2AE5DE1BA3CE49003C35F8 /* NTSqliteStatement.m in Sources */,
 				AE2AE5D41BA3CE49003C35F8 /* NTIntegerEncoder.m in Sources */,
 				AE2AE5D61BA3CE49003C35F8 /* NTNodeContext.m in Sources */,

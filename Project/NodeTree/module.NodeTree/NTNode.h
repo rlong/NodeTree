@@ -75,6 +75,20 @@
 - (void)setInteger:(int64_t)value withKey:(NSString*)key atIndex:(NSNumber*)index;
 
 
+#pragma mark - number
+
+-(NSNumber*)getNumberWithKey:(NSString*)key atIndex:(NSNumber*)index defaultValue:(NSNumber*)defaultValue;
+
+
+- (void)removeNumberWithKeyAtIndex:(int64_t)index;
+- (void)removeNumberWithKey:(NSString*)key;
+- (void)removeNumberWithKey:(NSString*)key atIndex:(NSNumber*)index;
+
+- (void)setNumber:(NSNumber*)number atIndex:(NSNumber*)index;
+- (void)setNumber:(NSNumber*)number withKey:(NSString*)key;
+- (void)setNumber:(NSNumber*)number withKey:(NSString*)key atIndex:(NSNumber*)index;
+
+
 #pragma mark - null
 
 - (void)setNullAtIndex:(sqlite_int64)index;
