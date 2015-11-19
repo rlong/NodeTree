@@ -68,11 +68,8 @@
 
 - (void)dealloc {
     
-    if( !_sqliteDone &&  nil != _sqliteStatement ) {
-        
-        [_sqliteStatement finalize];
-        
-    }
+    [self finalize];
+    
 }
 
 
@@ -86,7 +83,7 @@
     
     NTSqliteConnection* sqliteConnection = [context sqliteConnection];
     
-    NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk_path like ?"; // 'B.%'
+    NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk_path like ? order by parent_pk_path"; // 'B.%'
     
     NTSqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     NSString* like = [[node pkPath] stringByAppendingString:@"%"];
@@ -120,13 +117,13 @@
         [answer setEdgeIndex:edge_index];
         [answer setTypeId:type_id];
         
+        Log_debugString( answer.edgeName );
+        
         return answer;
         
     } else if( SQLITE_DONE == resultCode ) {
         
-        [_sqliteStatement finalize];
-        _sqliteDone = true;
-        _sqliteStatement = nil;
+        [self finalize];
         return nil;
     }
     
@@ -134,8 +131,21 @@
     Log_error(@"unexpected code path");
     return nil;
     
+    
 }
 
+
+- (void)finalize;
+{
+    
+    if( nil != _sqliteStatement ) {
+        
+        [_sqliteStatement finalize];
+        _sqliteDone = true;
+        _sqliteStatement = nil;
+        
+    }
+}
 
 
 @end

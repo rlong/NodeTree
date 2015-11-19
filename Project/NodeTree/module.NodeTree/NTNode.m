@@ -448,9 +448,9 @@
 
 
 
-- (void)setNumber:(NSNumber*)number atIndex:(NSNumber*)index;
+- (void)setNumber:(NSNumber*)number atIndex:(int64_t)index;
 {
-    [self setNumber:number withKey:nil atIndex:index];
+    [self setNumber:number withKey:nil atIndex:@(index)];
 
 }
 
@@ -491,6 +491,7 @@
                 case kCFNumberDoubleType:
                 case kCFNumberCGFloatType:
                     realValue = number;
+                    break;
                 default:
                     integerValue = number;
             }
@@ -551,6 +552,15 @@
     
     
 }
+
+- (void)setNullWithKey:(NSString*)key atIndex:(NSNumber*)index;
+{
+    
+    
+    
+}
+
+
 
 
 #pragma mark - real
@@ -806,6 +816,29 @@
     
 }
 
+
+#pragma mark - remove property
+
+
+- (void)removeAllProperties;
+{
+    
+    NTSqliteConnection* connection = [_context sqliteConnection];
+    NSString* sql = @"delete from node_property where node_pk = ? ";
+    
+    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    
+    @try {
+        
+        [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+        [sqliteStatement step];
+        
+    }
+    @finally {
+        [sqliteStatement finalize];
+    }
+
+}
 
 
 - (void)removeProperyAtIndex:(int64_t)index;

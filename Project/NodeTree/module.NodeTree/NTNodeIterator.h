@@ -25,4 +25,8 @@
 - (NTNode*)next;
 
 
+
+- (void)finalize;
+
+
 @end

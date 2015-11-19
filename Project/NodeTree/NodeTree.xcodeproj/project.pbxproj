@@ -39,6 +39,13 @@
 		AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */; };
 		AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
 		AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
+		AEEA167E1BF825D700AF3281 /* NTNodeStreamListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA167D1BF825D700AF3281 /* NTNodeStreamListener.m */; };
+		AEEA16841BF826C500AF3281 /* NTNodeTreeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA16831BF826C500AF3281 /* NTNodeTreeReader.m */; };
+		AEEA16871BF827D400AF3281 /* NTNodeTreeReaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA16861BF827D400AF3281 /* NTNodeTreeReaderDelegate.m */; };
+		AEEA168A1BF8286900AF3281 /* NTNodePropertyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA16891BF8286900AF3281 /* NTNodePropertyDelegate.m */; };
+		AEEA168C1BF8434300AF3281 /* NTNodeTreeReaderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA168B1BF8434300AF3281 /* NTNodeTreeReaderIntegrationTest.m */; };
+		AEEA168E1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = AEEA168D1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json */; };
+		AEEA16901BF845B900AF3281 /* NTNodeTreeReaderIntegrationTest.json in Resources */ = {isa = PBXBuildFile; fileRef = AEEA168D1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json */; };
 		AEF03AC21BAD302200923748 /* NTNodeIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC11BAD302200923748 /* NTNodeIterator.m */; };
 		AEF03AC51BAD433900923748 /* NTJSONReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC41BAD433900923748 /* NTJSONReader.m */; };
 		AEF03AC71BAD434B00923748 /* NTJSONReaderIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */; };
@@ -115,6 +122,16 @@
 		AEB961811A36C60600A363E8 /* libjsonbroker.library.osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.osx.a; path = ../jsonbroker/build/Debug/libjsonbroker.library.osx.a; sourceTree = "<group>"; };
 		AEB961831A36C60E00A363E8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		AEB961851A36C61D00A363E8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		AEEA167C1BF825D700AF3281 /* NTNodeStreamListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeStreamListener.h; sourceTree = "<group>"; };
+		AEEA167D1BF825D700AF3281 /* NTNodeStreamListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeStreamListener.m; sourceTree = "<group>"; };
+		AEEA16821BF826C500AF3281 /* NTNodeTreeReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeTreeReader.h; sourceTree = "<group>"; };
+		AEEA16831BF826C500AF3281 /* NTNodeTreeReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeTreeReader.m; sourceTree = "<group>"; };
+		AEEA16851BF827D400AF3281 /* NTNodeTreeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeTreeReaderDelegate.h; sourceTree = "<group>"; };
+		AEEA16861BF827D400AF3281 /* NTNodeTreeReaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeTreeReaderDelegate.m; sourceTree = "<group>"; };
+		AEEA16881BF8286900AF3281 /* NTNodePropertyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodePropertyDelegate.h; sourceTree = "<group>"; };
+		AEEA16891BF8286900AF3281 /* NTNodePropertyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodePropertyDelegate.m; sourceTree = "<group>"; };
+		AEEA168B1BF8434300AF3281 /* NTNodeTreeReaderIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTNodeTreeReaderIntegrationTest.m; sourceTree = "<group>"; };
+		AEEA168D1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NTNodeTreeReaderIntegrationTest.json; sourceTree = "<group>"; };
 		AEF03A881BAD24D500923748 /* FoundationAnnex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationAnnex.framework; path = ../submodules/FoundationAnnex/build/Debug/FoundationAnnex.framework; sourceTree = "<group>"; };
 		AEF03A8A1BAD254200923748 /* FoundationAnnex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FoundationAnnex.framework; path = ../submodules/FoundationAnnex/build/Debug/FoundationAnnex.framework; sourceTree = "<group>"; };
 		AEF03AC01BAD302200923748 /* NTNodeIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTNodeIterator.h; sourceTree = "<group>"; };
@@ -217,6 +234,16 @@
 				AE2AE5B71BA3CE49003C35F8 /* NTNodeTree.m */,
 				AEF03AC01BAD302200923748 /* NTNodeIterator.h */,
 				AEF03AC11BAD302200923748 /* NTNodeIterator.m */,
+				AEEA16821BF826C500AF3281 /* NTNodeTreeReader.h */,
+				AEEA16831BF826C500AF3281 /* NTNodeTreeReader.m */,
+				AEEA168D1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json */,
+				AEEA168B1BF8434300AF3281 /* NTNodeTreeReaderIntegrationTest.m */,
+				AEEA16851BF827D400AF3281 /* NTNodeTreeReaderDelegate.h */,
+				AEEA16861BF827D400AF3281 /* NTNodeTreeReaderDelegate.m */,
+				AEEA167C1BF825D700AF3281 /* NTNodeStreamListener.h */,
+				AEEA167D1BF825D700AF3281 /* NTNodeStreamListener.m */,
+				AEEA16881BF8286900AF3281 /* NTNodePropertyDelegate.h */,
+				AEEA16891BF8286900AF3281 /* NTNodePropertyDelegate.m */,
 				AE2AE6271BA3D378003C35F8 /* json */,
 				AE2AE5B81BA3CE49003C35F8 /* schema */,
 				AE2AE5C31BA3CE49003C35F8 /* sqlite */,
@@ -425,7 +452,9 @@
 		AEB960341A36ABAD00A363E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = com.hexbeerium;
 				TargetAttributes = {
 					AE2AE5651BA3BC8F003C35F8 = {
@@ -462,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2AE5741BA3BC8F003C35F8 /* Main.storyboard in Resources */,
+				AEEA16901BF845B900AF3281 /* NTNodeTreeReaderIntegrationTest.json in Resources */,
 				AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */,
 				AE2AE5791BA3BC8F003C35F8 /* LaunchScreen.xib in Resources */,
 				AE2AE5761BA3BC8F003C35F8 /* Images.xcassets in Resources */,
@@ -473,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */,
+				AEEA168E1BF8436C00AF3281 /* NTNodeTreeReaderIntegrationTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,10 +525,14 @@
 				AE2AE5D71BA3CE49003C35F8 /* NTNodeTree.m in Sources */,
 				AE2AE5711BA3BC8F003C35F8 /* ViewController.m in Sources */,
 				AE2AE5DD1BA3CE49003C35F8 /* NTSqliteConnection.m in Sources */,
+				AEEA16871BF827D400AF3281 /* NTNodeTreeReaderDelegate.m in Sources */,
+				AEEA167E1BF825D700AF3281 /* NTNodeStreamListener.m in Sources */,
 				AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */,
 				AE2AE5DB1BA3CE49003C35F8 /* NTTableDescriptor.m in Sources */,
 				AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */,
 				AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */,
+				AEEA16841BF826C500AF3281 /* NTNodeTreeReader.m in Sources */,
+				AEEA168A1BF8286900AF3281 /* NTNodePropertyDelegate.m in Sources */,
 				AE2AE5D91BA3CE49003C35F8 /* NTNodeTreeSchema.m in Sources */,
 				AEF9644C1BC8A82E007797FF /* ErrorHandler.swift in Sources */,
 				AE2AE5DC1BA3CE49003C35F8 /* NTTableProperty.m in Sources */,
@@ -519,6 +554,7 @@
 				AE2AE5EA1BA3CE62003C35F8 /* NTIntegerIntegrationTest.m in Sources */,
 				AE2AE5E81BA3CE62003C35F8 /* NTBooleanIntegrationTest.m in Sources */,
 				AE2AE5E91BA3CE62003C35F8 /* NTDoubleIntegrationTest.m in Sources */,
+				AEEA168C1BF8434300AF3281 /* NTNodeTreeReaderIntegrationTest.m in Sources */,
 				AE2AE5ED1BA3CE62003C35F8 /* NTStringIntegrationTest.m in Sources */,
 				AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */,
 				AE2AE5851BA3BC8F003C35F8 /* NodeTreeTests.m in Sources */,
@@ -571,6 +607,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ardlong.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -587,6 +624,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ardlong.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -608,6 +646,7 @@
 				INFOPLIST_FILE = NodeTreeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ardlong.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NodeTree.app/NodeTree";
 			};
@@ -627,6 +666,7 @@
 				INFOPLIST_FILE = NodeTreeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ardlong.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NodeTree.app/NodeTree";
 			};
@@ -652,6 +692,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

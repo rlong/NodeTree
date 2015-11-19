@@ -58,35 +58,8 @@
     if( [blob isKindOfClass:[NSNumber class]]) {
         
         NSNumber* number = (NSNumber*)blob;
+        [node setNumber:number withKey:key];
         
-        const char* objCType = [number objCType];
-        
-        // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        
-        if (strcmp(objCType, @encode(BOOL)) == 0) {
-            
-            // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-            
-            [node setBool:[number boolValue] withKey:key];
-            return;
-        }
-        
-        // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        CFNumberType numberType = CFNumberGetType( (CFNumberRef)number );
-        // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        
-        switch (numberType) {
-            case kCFNumberFloat32Type:
-            case kCFNumberFloat64Type:
-            case kCFNumberFloatType:
-            case kCFNumberDoubleType:
-            case kCFNumberCGFloatType:
-                [node setReal:[number doubleValue] forKey:key];
-                return;
-            default:
-                [node setInteger:[number intValue] withKey:key];
-                return;
-        }
     }
     
     if( [blob isKindOfClass:[NSString class]] ) {
@@ -133,34 +106,8 @@
         
         NSNumber* number = (NSNumber*)blob;
         
-        const char* objCType = [number objCType];
+        [node setNumber:number atIndex:index];
         
-        // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        
-        if (strcmp(objCType, @encode(BOOL)) == 0) {
-            
-            // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-            
-            [node setBool:[number boolValue] atIndex:index];
-            return;
-        }
-        
-        // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        CFNumberType numberType = CFNumberGetType( (CFNumberRef)number );
-        // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
-        
-        switch (numberType) {
-            case kCFNumberFloat32Type:
-            case kCFNumberFloat64Type:
-            case kCFNumberFloatType:
-            case kCFNumberDoubleType:
-            case kCFNumberCGFloatType:
-                [node setReal:[number doubleValue] atIndex:index];
-                return;
-            default:
-                [node setInteger:[number intValue] atIndex:index];
-                return;
-        }
     }
     
     if( [blob isKindOfClass:[NSString class]] ) {

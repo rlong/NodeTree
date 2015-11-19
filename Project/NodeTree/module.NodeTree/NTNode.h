@@ -84,7 +84,7 @@
 - (void)removeNumberWithKey:(NSString*)key;
 - (void)removeNumberWithKey:(NSString*)key atIndex:(NSNumber*)index;
 
-- (void)setNumber:(NSNumber*)number atIndex:(NSNumber*)index;
+- (void)setNumber:(NSNumber*)number atIndex:(int64_t)index;
 - (void)setNumber:(NSNumber*)number withKey:(NSString*)key;
 - (void)setNumber:(NSNumber*)number withKey:(NSString*)key atIndex:(NSNumber*)index;
 
@@ -112,6 +112,12 @@
 
 
 #pragma mark - remove property
+
+
+
+- (void)removeAllProperties;
+
+
 
 - (void)removeProperyAtIndex:(sqlite3_int64)index;
 - (void)removeProperyWithKey:(NSString*)key;
