@@ -40,6 +40,8 @@
 
 + (void)addPropertiesFor:(NTNode*)node toJSONObject:(NSMutableDictionary*)jsonObject {
     
+    
+    
     NTNodePropertyIterator* nodePropertyIterator = [NTNodePropertyIterator propertiesOf:node];
     
     for( NTNodeProperty* nodeProperty = [nodePropertyIterator next]; nil != nodeProperty; nodeProperty = [nodePropertyIterator next] ) {

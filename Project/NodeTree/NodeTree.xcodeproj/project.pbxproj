@@ -39,6 +39,7 @@
 		AE2AE6331BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */; };
 		AE2AE6351BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
 		AE2AE6361BA3DC97003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json in Resources */ = {isa = PBXBuildFile; fileRef = AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */; };
+		AEB030CF1C22ACDA0056A9D1 /* NTJSONReader2.m in Sources */ = {isa = PBXBuildFile; fileRef = AEB030CE1C22ACDA0056A9D1 /* NTJSONReader2.m */; };
 		AEEA167E1BF825D700AF3281 /* NTNodeStreamListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA167D1BF825D700AF3281 /* NTNodeStreamListener.m */; };
 		AEEA16841BF826C500AF3281 /* NTNodeTreeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA16831BF826C500AF3281 /* NTNodeTreeReader.m */; };
 		AEEA16871BF827D400AF3281 /* NTNodeTreeReaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEA16861BF827D400AF3281 /* NTNodeTreeReaderDelegate.m */; };
@@ -117,6 +118,8 @@
 		AE2AE6291BA3D3A2003C35F8 /* NTJSONWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONWriter.m; sourceTree = "<group>"; };
 		AE2AE6321BA3DA1F003C35F8 /* NTJSONWriterIntegrationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONWriterIntegrationTest.m; sourceTree = "<group>"; };
 		AE2AE6341BA3DC1C003C35F8 /* NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json; sourceTree = "<group>"; };
+		AEB030CD1C22ACDA0056A9D1 /* NTJSONReader2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTJSONReader2.h; sourceTree = "<group>"; };
+		AEB030CE1C22ACDA0056A9D1 /* NTJSONReader2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTJSONReader2.m; sourceTree = "<group>"; };
 		AEB960B01A36ACAA00A363E8 /* libjsonbroker.library.ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.ios.a; path = "../jsonbroker/build/Debug-iphoneos/libjsonbroker.library.ios.a"; sourceTree = "<group>"; };
 		AEB961341A36C4B200A363E8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		AEB961811A36C60600A363E8 /* libjsonbroker.library.osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsonbroker.library.osx.a; path = ../jsonbroker/build/Debug/libjsonbroker.library.osx.a; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				AEF03AC31BAD433900923748 /* NTJSONReader.h */,
 				AEF03AC41BAD433900923748 /* NTJSONReader.m */,
 				AEF03AC61BAD434B00923748 /* NTJSONReaderIntegrationTest.m */,
+				AEB030CD1C22ACDA0056A9D1 /* NTJSONReader2.h */,
+				AEB030CE1C22ACDA0056A9D1 /* NTJSONReader2.m */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				AEEA167E1BF825D700AF3281 /* NTNodeStreamListener.m in Sources */,
 				AEF03ACD1BAD597900923748 /* NTNodePropertyIterator.m in Sources */,
 				AE2AE5DB1BA3CE49003C35F8 /* NTTableDescriptor.m in Sources */,
+				AEB030CF1C22ACDA0056A9D1 /* NTJSONReader2.m in Sources */,
 				AE2AE56E1BA3BC8F003C35F8 /* AppDelegate.m in Sources */,
 				AEF03AD01BAD59E400923748 /* NTNodeProperty.m in Sources */,
 				AEEA16841BF826C500AF3281 /* NTNodeTreeReader.m in Sources */,

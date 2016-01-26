@@ -42,6 +42,35 @@
     return self;
 }
 
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withBooleanValue:(BOOL)value;
+{
+    Log_debugFormat( @"%@: %d", name, value );
+}
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withIntegerValue:(int64_t)value;
+{
+    Log_debugFormat( @"%@: %d", name, value );
+}
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withNullValue:(NSNull*)value;
+{
+    
+    Log_debugFormat( @"%@: NULL", name, value );
+}
+
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withRealValue:(double)value;
+{
+    Log_debugFormat( @"%@: %f", name, value );
+}
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withStringValue:(NSString*)value;
+{
+    Log_debugFormat( @"%@: %@", name, value );
+}
+
+
+
 - (void)onNodeEndForReader:(NTNodeTreeReader*)nodeTreeReader nodePk:(NSNumber*)nodePk nodePath:(NSString*)nodePath edgeName:(NSString*)edgeName edgeIndex:(NSNumber*)edgeIndex typeId:(NSNumber*)typeId;
 {
     self.offset--;

@@ -93,6 +93,23 @@
     return [[NTNodeIterator alloc] initWithContext:context sqliteStatement:sqliteStatement];
 }
 
++ (NTNodeIterator*)immediateChildrenOf:(NTNode*)node;
+{
+    Log_debugString( [node pkPath] );
+    
+    NTNodeContext* context = [node context];
+    
+    
+    NTSqliteConnection* sqliteConnection = [context sqliteConnection];
+    
+    NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk = ?";
+    
+    NTSqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
+    [sqliteStatement bindInt64:[node.pk longLongValue] atIndex:1];
+    
+    return [[NTNodeIterator alloc] initWithContext:context sqliteStatement:sqliteStatement];
+}
+
 
 
 - (NTNode*)next {

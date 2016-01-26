@@ -14,7 +14,9 @@
 #import "NTNodeIterator.h"
 #import "NTNodeTreeReader.h"
 #import "NTNodeTreeReaderDelegate.h"
+#import "NTNodeProperty.h"
 #import "NTNodePropertyDelegate.h"
+#import "NTNodePropertyIterator.h"
 
 
 
@@ -49,64 +51,74 @@
 
 
 
-//- (NSNumber*)peek;
-//{
-//    return (NSNumber*)[self.pkStack lastObject];
-//}
-//
-//- (NSNumber*)pop;
-//{
-//    
-//}
+- (void)readPropertiesFor:(NTNode*)node withDelegate:(NSObject<NTNodeTreeReaderDelegate>*)delegate {
+    
+    NTNodePropertyIterator* nodePropertyIterator = [NTNodePropertyIterator propertiesOf:node];
+    
+    for( NTNodeProperty* nodeProperty = [nodePropertyIterator next]; nil != nodeProperty; nodeProperty = [nodePropertyIterator next] ) {
+        
+        NSNumber* booleanValue = [nodeProperty booleanValue];
+        if( nil != booleanValue ) {
+            [delegate onPropertyWithEdgeName:[nodeProperty edgeName] edgeIndex:[nodeProperty edgeIndex] withBooleanValue:[booleanValue boolValue]];
+            continue;
 
+        }
+        
+        NSNumber* integerValue = [nodeProperty integerValue];
+        if( nil != integerValue ) {
+            [delegate onPropertyWithEdgeName:[nodeProperty edgeName] edgeIndex:[nodeProperty edgeIndex] withIntegerValue:[integerValue longLongValue]];
+            continue;
+            
+        }
+        NSNumber* realValue = [nodeProperty realValue];
+        if( nil != realValue ) {
+            [delegate onPropertyWithEdgeName:[nodeProperty edgeName] edgeIndex:[nodeProperty edgeIndex] withRealValue:[realValue doubleValue]];
+            continue;
+            
+        }
+        NSString* stringValue = [nodeProperty stringValue];
+        if( nil != stringValue ) {
+            [delegate onPropertyWithEdgeName:[nodeProperty edgeName] edgeIndex:[nodeProperty edgeIndex] withStringValue:stringValue];
+            continue;
+            
+        }
+        
+        [delegate onPropertyWithEdgeName:[nodeProperty edgeName] edgeIndex:[nodeProperty edgeIndex] withNullValue:[NSNull null]];
+    }
+    
+}
 
-
-//- (NTNode*)handleChildrenOf:(NTNode*)node withDelegate:(NSObject<NTNodeTreeReaderDelegate>*)delegate;
-//{
-//    
-//    NTNode* nextNode = [self.nodeIterator next];
-//    
-//    while ( nil != nextNode && [node.pk isEqualToNumber:[nextNode parentPk]] ) {
-//            
-//            [self walk:nextNode withDelegate:delegate];
-//            nextNode = [self.nodeIterator next]; // next child (maybe)
-//    }
-//    
-//    return nextNode;
-//}
-
-
-// returns unhandled nodes (those that are not direct descendents (ie siblngs, or aunts or uncles)
-- (NTNode*)walk:(NTNode*)node withDelegate:(NSObject<NTNodeTreeReaderDelegate>*)delegate;
+- (void)walk:(NTNode*)node withDelegate:(NSObject<NTNodeTreeReaderDelegate>*)delegate;
 {
 
     [delegate onNodeBeginForReader:self nodePk:node.pk nodePath:node.pkPath edgeName:node.edgeName edgeIndex:node.edgeIndex typeId:node.typeId];
     
-    NTNode* nextNode = [self.nodeIterator next];
-    Log_debugString( nextNode.edgeName);
-    // while `nextNode` is a direct child ...
-    while( nextNode != nil && [node.pk isEqualToNumber:[nextNode parentPk]] ) {
+    [self readPropertiesFor:node withDelegate:delegate];
+    
+    NTNodeIterator* nodeIterator = [NTNodeIterator immediateChildrenOf:node];
+
+    NTNode* child = [nodeIterator next];
+    Log_debugString( child.edgeName);
+    while( child != nil ) {
         
-        nextNode = [self walk:nextNode withDelegate:delegate];
+        [self walk:child withDelegate:delegate];
         
+        child = [nodeIterator next];
     }
-    NTNode* unhandledNode = nextNode;
     
     [delegate onNodeEndForReader:self nodePk:node.pk nodePath:node.pkPath edgeName:node.edgeName edgeIndex:node.edgeIndex typeId:node.typeId];
     
-    return unhandledNode;
 
 }
 
-
-// + (NTNodeIterator*)childrenOf:(NTNode*)node;
 
 + (void)readFromRoot:(NTNode*)root delegate:(NSObject<NTNodeTreeReaderDelegate>*)delegate;
 {
     
     
     NTNodeTreeReader* reader = [[NTNodeTreeReader alloc] init];
-    reader.nodeIterator = [NTNodeIterator childrenOf:root];
+//    reader.nodeIterator = [NTNodeIterator childrenOf:root];
+    reader.nodeIterator = [NTNodeIterator immediateChildrenOf:root];
     
     [reader walk:root withDelegate:delegate];
     

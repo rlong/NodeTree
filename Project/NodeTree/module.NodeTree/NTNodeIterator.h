@@ -20,6 +20,8 @@
 
 + (NTNodeIterator*)childrenOf:(NTNode*)node;
 
++ (NTNodeIterator*)immediateChildrenOf:(NTNode*)node;
+
 
 // returns nil when there are no more
 - (NTNode*)next;
