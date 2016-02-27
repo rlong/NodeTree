@@ -2,21 +2,25 @@
 //  NTJSONReaderIntegrationTest.m
 //  NodeTree
 //
-//  Created by rlong on 19/09/2015.
-//  Copyright (c) 2015 com.hexbeerium. All rights reserved.
+//  Created by rlong on 13/02/2016.
+//  Copyright © 2016 com.hexbeerium. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
 
-#import "FALog.h"
+#import "CALog.h"
+
+#import "JBBaseException.h"
+#import "JBExceptionHelper.h"
 
 #import "NTJSONReader.h"
+#import "NTNodeTreeReader.h"
 #import "NTJSONWriter.h"
-#import "NTNodeContext.h"
-#import "NTNodeIterator.h"
 #import "NTTestContext.h"
+#import "NTNodeContext.h"
+#import "NTJSONReader.h"
+
 
 @interface NTJSONReaderIntegrationTest : XCTestCase
 
@@ -36,7 +40,7 @@
 
 - (void)testExample {
     // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
 }
 
 - (void)testPerformanceExample {
@@ -48,23 +52,14 @@
 
 
 
-- (NSString*)setupTestDataWithContext:(NTNodeContext*)nodeContext {
-    
-    NSString* rootNodeName = @"[NTJSONReaderIntegrationTest setupTestDataWithContext:]";
-    
-    NTNode* node = [nodeContext getRootWithKey:rootNodeName];
-    if( nil != node ) {
-        Log_debug( @"nil != node" );
-        return rootNodeName; // nothing to do
-    }
-    
 
-    ///////////////////////////////////////////////////////////////////////
+
+- (NTNode*)buildRoot:(NTNodeContext*)nodeContext;
+{
     
-    
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json" ofType:nil];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"NTJSONReaderIntegrationTest.buildRoot.json" ofType:nil];
     XCTAssertNotNil( path );
-
+    
     
     NSData* jsonData = nil;
     {
@@ -87,44 +82,48 @@
         XCTAssertNotNil( json );
         
     }
-
     
-    NTNode* rootNode = [nodeContext addRootWithKey:rootNodeName];
-    [NTJSONWriter addJSONDictionary:json toNode:rootNode];
     
-    return rootNodeName;
-
-
+    NTNode* answer;
+    [nodeContext begin];
+    {
+        NSString* rootName = [NSString stringWithFormat:@"NTJSONReaderIntegrationTest.buildRoot.%d", rand()];
+        Log_debugString( rootName );
+        
+        answer = [nodeContext addRootWithKey:rootName];
+        [NTJSONWriter addJSONDictionary:json toNode:answer];
+        
+    }
+    [nodeContext commit];
     
+    return answer;
     
 }
 
-- (void)testIterateOverDatabase {
+
+- (void)testReadVLCPlayingStatus {
     
     Log_enteredMethod();
     
     NTTestContext* testContext = [NTTestContext defaultContext];
     NTNodeContext* nodeContext = [testContext openContext];
     
-    [nodeContext begin];
-    {
-        
-        NSString* rootNodeName = [self setupTestDataWithContext:nodeContext];
-        NTNode* rootNode = [nodeContext getRootWithKey:rootNodeName];
-        XCTAssertNotNil( rootNode );
-        
-        NSDictionary* rootDictionary = [NTJSONReader readJSONDictionaryForNode:rootNode];
-        
-        Log_debugInt( [rootDictionary count] );
-        XCTAssertTrue( 0 != [rootDictionary count] );
-        
-    }
-    [nodeContext commit];
+    NTNode* root = [self buildRoot:nodeContext];
+    XCTAssertNotNil( root );
     
-    [testContext closeContext:nodeContext];
+    NTJSONReader* delegate = [[NTJSONReader alloc] init];
+    [NTNodeTreeReader readFromRoot:root delegate:delegate];
+    
+    NSArray* rootArray = [delegate rootArray];
+    XCTAssertNil( rootArray );
+    
+    NSMutableDictionary* rootDictionary = [delegate rootDictionary];
+    XCTAssertNotNil( rootDictionary );
+    
+    XCTAssertTrue( 20 == rootDictionary.count );
 
-    
-    
+   
 }
+
 
 @end

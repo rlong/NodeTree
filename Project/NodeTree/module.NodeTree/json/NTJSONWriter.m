@@ -59,6 +59,7 @@
         
         NSNumber* number = (NSNumber*)blob;
         [node setNumber:number withKey:key];
+        return;
         
     }
     
@@ -105,8 +106,8 @@
     if( [blob isKindOfClass:[NSNumber class]]) {
         
         NSNumber* number = (NSNumber*)blob;
-        
         [node setNumber:number atIndex:index];
+        return;
         
     }
     

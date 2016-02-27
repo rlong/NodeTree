@@ -7,18 +7,18 @@
 //
 
 
-#import "FALog.h"
+#import "CALog.h"
+#import "CASqliteConnection.h"
+#import "CASqliteStatement.h"
 
 #import "NTNode.h"
 #import "NTNodeContext.h"
 #import "NTNodeIterator.h"
-#import "NTSqliteConnection.h"
-#import "NTSqliteStatement.h"
 
 @implementation NTNodeIterator {
     
     NTNodeContext* _context;
-    NTSqliteStatement* _sqliteStatement;
+    CASqliteStatement* _sqliteStatement;
     BOOL _sqliteDone;
 }
 
@@ -33,7 +33,7 @@
         
         _context = context;
         
-        NTSqliteConnection* sqliteConnection = [context sqliteConnection];
+        CASqliteConnection* sqliteConnection = [context sqliteConnection];
         
         NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node";
         
@@ -47,7 +47,7 @@
 }
 
 
-- (instancetype)initWithContext:(NTNodeContext*)context sqliteStatement:(NTSqliteStatement*)sqliteStatement;
+- (instancetype)initWithContext:(NTNodeContext*)context sqliteStatement:(CASqliteStatement*)sqliteStatement;
 {
     
     self = [super init];
@@ -81,11 +81,11 @@
     NTNodeContext* context = [node context];
     
     
-    NTSqliteConnection* sqliteConnection = [context sqliteConnection];
+    CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
     NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk_path like ? order by parent_pk_path"; // 'B.%'
     
-    NTSqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
+    CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     NSString* like = [[node pkPath] stringByAppendingString:@"%"];
     Log_debugString(like);
     [sqliteStatement bindText:like atIndex:1];
@@ -100,11 +100,11 @@
     NTNodeContext* context = [node context];
     
     
-    NTSqliteConnection* sqliteConnection = [context sqliteConnection];
+    CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
     NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk = ?";
     
-    NTSqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
+    CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     [sqliteStatement bindInt64:[node.pk longLongValue] atIndex:1];
     
     return [[NTNodeIterator alloc] initWithContext:context sqliteStatement:sqliteStatement];

@@ -10,3 +10,15 @@
 [submodule "Project/Submodules/jsonbroker.objective_c"]
 	path = Project/Submodules/jsonbroker.objective_c
 	url = https://github.com/rlong/jsonbroker.objective_c.git
+[submodule "Project/Submodules/cocoa.lib.CocoaAnnex"]
+	path = Project/Submodules/cocoa.lib.CocoaAnnex
+	url = https://github.com/rlong/cocoa.lib.CocoaAnnex.git
+[submodule "Project/Submodules/cocoa.lib.Http"]
+	path = Project/Submodules/cocoa.lib.Http
+	url = https://github.com/rlong/cocoa.lib.Http.git
+[submodule "Project/Submodules/cocoa.lib.HttpLibrary"]
+	path = Project/Submodules/cocoa.lib.HttpLibrary
+	url = https://github.com/rlong/cocoa.lib.HttpLibrary.git
+[submodule "Project/Submodules/ios.lib.CocoaTouchAnnex"]
+	path = Project/Submodules/ios.lib.CocoaTouchAnnex
+	url = https://github.com/rlong/ios.lib.CocoaTouchAnnex.git

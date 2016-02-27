@@ -6,26 +6,27 @@
 //  Copyright (c) 2015 com.hexbeerium. All rights reserved.
 //
 
-#import "FALog.h"
+#import "CALog.h"
+#import "CASqliteConnection.h"
+#import "CASqliteStatement.h"
+
 
 #import "NTNode.h"
 #import "NTNodeContext.h"
 #import "NTNodePropertyIterator.h"
 #import "NTNodeProperty.h"
-#import "NTSqliteConnection.h"
-#import "NTSqliteStatement.h"
 
 @implementation NTNodePropertyIterator {
     
     NTNodeContext* _context;
     NTNode* _node;
-    NTSqliteStatement* _sqliteStatement;
+    CASqliteStatement* _sqliteStatement;
     BOOL _sqliteDone;
 
 }
 
 
-- (instancetype)initWithContext:(NTNodeContext*)context node:(NTNode*)node  sqliteStatement:(NTSqliteStatement*)sqliteStatement;
+- (instancetype)initWithContext:(NTNodeContext*)context node:(NTNode*)node  sqliteStatement:(CASqliteStatement*)sqliteStatement;
 {
     
     self = [super init];
@@ -55,16 +56,16 @@
 
 + (NTNodePropertyIterator*)propertiesOf:(NTNode*)node;
 {
-    Log_debugString( [node pkPath] );
+//    Log_debugString( [node pkPath] );
     
     NTNodeContext* context = [node context];
     
     
-    NTSqliteConnection* sqliteConnection = [context sqliteConnection];
+    CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
     NSString* sql = @"select edge_name, edge_index, boolean_value, integer_value, real_value, string_value from node_property where node_pk = ?"; // 'B.%'
     
-    NTSqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
+    CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     [sqliteStatement bindInt64:[[node pk] longLongValue] atIndex:1];
     
     return [[NTNodePropertyIterator alloc] initWithContext:context node:node sqliteStatement:sqliteStatement];

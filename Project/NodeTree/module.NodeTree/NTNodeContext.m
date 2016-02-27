@@ -7,30 +7,27 @@
 //
 //
 
-#import "FALog.h"
+#import "CALog.h"
+#import "CASqliteConnection.h"
+#import "CASqliteStatement.h"
 
 #import "NTIntegerEncoder.h"
 #import "NTNode.h"
 #import "NTNodeContext.h"
-#import "NTSqliteConnection.h"
-#import "NTSqliteStatement.h"
-
-
-
 
 
 
 @implementation NTNodeContext {
     
     
-    NTSqliteConnection* _sqliteConnection;
+    CASqliteConnection* _sqliteConnection;
 }
 
 
 #pragma mark -
 #pragma mark instance lifecycle
 
--(id)initWithSqliteConnection:(NTSqliteConnection*)sqliteConnection {
+-(id)initWithSqliteConnection:(CASqliteConnection*)sqliteConnection {
     
     NTNodeContext* answer = [super init];
     
@@ -52,7 +49,7 @@
     
     NSString* sql = @"insert into node (edge_name, edge_index) values(?,null)";
     
-    NTSqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
+    CASqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
     
     @try {
         [sqliteStatement bindText:key atIndex:1];
@@ -104,7 +101,7 @@
     
     NSString* sql = @"select pk from node where edge_name = ? and parent_pk is NULL";
     
-    NTSqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
+    CASqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
     
     @try {
         [sqliteStatement bindText:key atIndex:1];

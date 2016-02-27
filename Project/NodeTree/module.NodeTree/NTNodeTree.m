@@ -7,7 +7,9 @@
 //
 
 
-#import "FALog.h"
+#import "CALog.h"
+#import "CASqliteConnection.h"
+#import "CASqliteStatement.h"
 
 #import "JBBaseException.h"
 #import "JBFileUtilities.h"
@@ -16,8 +18,6 @@
 
 #import "NTIntegerEncoder.h"
 #import "NTNodeTreeSchema.h"
-#import "NTSqliteConnection.h"
-#import "NTSqliteStatement.h"
 #import "NTNodeContext.h"
 #import "NTNode.h"
 #import "NTNodeTree.h"
@@ -54,11 +54,11 @@
     
     NTNodeContext* sqlLiteNodeContext = (NTNodeContext*)context;
     
-    NTSqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
+    CASqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
     
     NSString* sql = @"insert into node (edge_name, edge_index) values(?,0)";
     
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    CASqliteStatement* sqliteStatement = [connection prepare:sql];
 
     @try {
         [sqliteStatement bindText:key atIndex:1];
@@ -94,10 +94,10 @@
     
     NTNodeContext* sqlLiteNodeContext = (NTNodeContext*)context;
     
-    NTSqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
+    CASqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
     NSString* sql = @"select pk from node where edge_name = ? and root_pk is NULL";
     
-    NTSqliteStatement* sqliteStatement = [connection prepare:sql];
+    CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
         [sqliteStatement bindText:key atIndex:1];
@@ -151,7 +151,7 @@
         [NTNodeTreeSchema buildSchema:_databasePath];
     }
 
-    NTSqliteConnection* connection = [NTSqliteConnection open:_databasePath];
+    CASqliteConnection* connection = [CASqliteConnection open:_databasePath];
     NTNodeContext* answer = [[NTNodeContext alloc] initWithSqliteConnection:connection];
     
     return answer;

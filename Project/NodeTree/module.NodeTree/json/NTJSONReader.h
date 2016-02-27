@@ -2,19 +2,17 @@
 //  NTJSONReader.h
 //  NodeTree
 //
-//  Created by rlong on 19/09/2015.
-//  Copyright (c) 2015 com.hexbeerium. All rights reserved.
+//  Created by rlong on 17/12/2015.
+//  Copyright © 2015 com.hexbeerium. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@class NTNode;
+#import "NTNodeTreeReaderDelegate.h"
 
-@interface NTJSONReader : NSObject
+@interface NTJSONReader : NSObject <NTNodeTreeReaderDelegate>
 
-+ (NSDictionary*)readJSONDictionaryForNode:(NTNode*)node;
-
-
-
+@property (nonatomic, strong) NSMutableArray* rootArray;
+@property (nonatomic, strong) NSMutableDictionary* rootDictionary;
 
 @end

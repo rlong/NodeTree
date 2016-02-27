@@ -8,42 +8,42 @@
 
 
 
-#import "NTColumnDescriptor.h"
-#import "NTSchemaManager.h"
+#import "CAColumnDescriptor.h"
+#import "CASchemaManager.h"
 #import "NTNodeTreeSchema.h"
-#import "NTSqliteConnection.h"
-#import "NTTableDescriptor.h"
+#import "CASqliteConnection.h"
+#import "CATableDescriptor.h"
 
 
 @implementation NTNodeTreeSchema
 
-static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
+static CATableDescriptor* TABLES[] = { NULL, NULL, NULL };
 
 +(void)initialize {
     
     
     {
-        NTTableDescriptor* node = [[NTTableDescriptor alloc] initWithName:@"node"];
+        CATableDescriptor* node = [[CATableDescriptor alloc] initWithName:@"node"];
         TABLES[0] = node; // no need to release the `node`
         
         NSMutableArray* properties = [[NSMutableArray alloc] init];
         {
-            NTColumnDescriptor* columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"pk" properties:@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
+            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"pk" properties:@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
             [properties addObject:columnDescriptor];
             
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"parent_pk" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"parent_pk" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"parent_pk_path" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"parent_pk_path" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"type_id" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"type_id" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
             // ---------------------------------------------------------
@@ -70,39 +70,39 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
     }
     
     {
-        NTTableDescriptor* nodeProperty = [[NTTableDescriptor alloc] initWithName:@"node_property"];
+        CATableDescriptor* nodeProperty = [[CATableDescriptor alloc] initWithName:@"node_property"];
         TABLES[1] = nodeProperty; // no need to release the `node`
         
         NSMutableArray* properties = [[NSMutableArray alloc] init];
         {
             
-            NTColumnDescriptor* columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"node_pk" properties:@"INTEGER NOT NULL"];
+            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"node_pk" properties:@"INTEGER NOT NULL"];
             [properties addObject:columnDescriptor];
             
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
             
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
             
             
             // ---------------------------------------------------------
             
             
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"blob_value" properties:@"BLOB"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"blob_value" properties:@"BLOB"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"boolean_value" properties:@"BOOLEAN"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"boolean_value" properties:@"BOOLEAN"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"integer_value" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"integer_value" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"real_value" properties:@"REAL"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"real_value" properties:@"REAL"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[NTColumnDescriptor alloc] initWithName:@"string_value" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"string_value" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
 
@@ -130,18 +130,18 @@ static NTTableDescriptor* TABLES[] = { NULL, NULL, NULL };
 
 +(void)buildSchema:(NSString*)databasePath {
     
-    NTSqliteConnection* connection = [NTSqliteConnection open:databasePath];
+    CASqliteConnection* connection = [CASqliteConnection open:databasePath];
     {
-        [NTSchemaManager buildTables:connection tables:TABLES];
+        [CASchemaManager buildTables:connection tables:TABLES];
     }
     [connection close];
 }
 
 +(void)dropSchema:(NSString*)databasePath {
     
-    NTSqliteConnection* connection = [NTSqliteConnection open:databasePath];
+    CASqliteConnection* connection = [CASqliteConnection open:databasePath];
     {
-        [NTSchemaManager dropTables:connection tables:TABLES];
+        [CASchemaManager dropTables:connection tables:TABLES];
     }
     [connection close];
 }

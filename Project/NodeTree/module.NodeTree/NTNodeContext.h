@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class NTNode;
-@class NTSqliteConnection;
+@class CASqliteConnection;
 
 @interface NTNodeContext : NSObject
 
@@ -30,14 +30,14 @@
 #pragma mark -
 #pragma mark instance lifecycle
 
--(id)initWithSqliteConnection:(NTSqliteConnection*)sqliteConnection;
+-(id)initWithSqliteConnection:(CASqliteConnection*)sqliteConnection;
 
 #pragma mark -
 #pragma mark fields
 
 // sqliteConnection
 //XPSqliteConnection* _sqliteConnection;
-@property (nonatomic, readonly) NTSqliteConnection* sqliteConnection;
+@property (nonatomic, readonly) CASqliteConnection* sqliteConnection;
 //@property (nonatomic, retain, readwrite) XPSqliteConnection* sqliteConnection;
 //@synthesize sqliteConnection = _sqliteConnection;
 @end

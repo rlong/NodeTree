@@ -2,149 +2,188 @@
 //  NTJSONReader.m
 //  NodeTree
 //
-//  Created by rlong on 19/09/2015.
-//  Copyright (c) 2015 com.hexbeerium. All rights reserved.
+//  Created by rlong on 17/12/2015.
+//  Copyright © 2015 com.hexbeerium. All rights reserved.
 //
 
 
-#import "FALog.h"
-
+#import "JBLog.h"
 #import "NTJSONReader.h"
-#import "NTNode.h"
-#import "NTNodeIterator.h"
-#import "NTNodeProperty.h"
-#import "NTNodePropertyIterator.h"
 
-
-#define TYPE_ID_ARRAY 0x5b
-
-@implementation NTJSONReader
-
-
-+ (void)setBlob:(id)blob atIndex:(long)index inArray:(NSMutableArray*)array {
+@implementation NTJSONReader {
     
-    long offsetFromEnd = index - [array count];
     
-    if( offsetFromEnd < [array count] ) {
+    NSMutableArray* _stack;
+    NSMutableArray* _currentArray;
+    NSMutableDictionary* _currentDictionary;
+    
+
+}
+
+- (instancetype)init {
+    
+    self = [super init];
+    if( self ) {
+        _stack = [[NSMutableArray alloc] init];
+    }
+    
+    return self;
+}
+
+
++ (void)addObject:(NSObject*)object toArray:(NSMutableArray*)array atIndex:(NSNumber*)edgeIndex  {
+
+    NSInteger index = [edgeIndex intValue];
+    
+    if( array.count == index ) {
         
-        [array setObject:blob atIndexedSubscript:index];
+        [array addObject:object];
         
-    } else {
-        for( long i = 0; i < offsetFromEnd; i++ ) {
+    } else if( array.count > index ) {
+        
+        [array setObject:object atIndexedSubscript:index];
+        
+    } else { // array < index
+        
+        NSInteger fillerCount = index - array.count;
+        
+        // fill space with nils ...
+        for( int i = 0; i < fillerCount; i++ ) {
             [array addObject:[NSNull null]];
         }
-        [array addObject:blob];
+        [array addObject:object];
     }
+
     
 }
 
-+ (void)addPropertiesFor:(NTNode*)node toJSONObject:(NSMutableDictionary*)jsonObject {
+- (NSObject<NTNodeTreeReaderDelegate>*)onNodeBeginForReader:(NTNodeTreeReader*)nodeTreeReader  nodePk:(NSNumber*)nodePk nodePath:(NSString*)nodePath edgeName:(NSString*)edgeName edgeIndex:(NSNumber*)edgeIndex typeId:(NSNumber*)typeId {
     
     
+//    if( nil != edgeName ) {
+//        Log_debugString( edgeName );
+//    }
     
-    NTNodePropertyIterator* nodePropertyIterator = [NTNodePropertyIterator propertiesOf:node];
+    NSMutableArray* nextArray = nil;
+    NSMutableDictionary* nextDictionary = nil;
+    NSObject* nextObject = nil;
     
-    for( NTNodeProperty* nodeProperty = [nodePropertyIterator next]; nil != nodeProperty; nodeProperty = [nodePropertyIterator next] ) {
-    
-        if( nil != [nodeProperty booleanValue] ) {
-            [jsonObject setObject:[nodeProperty booleanValue] forKey:[nodeProperty edgeName]];
-            continue;
-        }
+    // object ?
+    if( nil == typeId ) {
         
-        if( nil != [nodeProperty integerValue] ) {
-            [jsonObject setObject:[nodeProperty integerValue] forKey:[nodeProperty edgeName]];
-            continue;
-            
-        }
-        if( nil != [nodeProperty realValue] ) {
-            [jsonObject setObject:[nodeProperty realValue] forKey:[nodeProperty edgeName]];
-            continue;
-            
-        }
-        if( nil != [nodeProperty stringValue] ) {
-            [jsonObject setObject:[nodeProperty stringValue] forKey:[nodeProperty edgeName]];
-            continue;
-            
-        }
-        [jsonObject setObject:[NSNull null] forKey:[nodeProperty edgeName]];
-    }
-    
-}
-
-+ (NSDictionary*)readJSONDictionaryForNode:(NTNode*)rootNode;
-{
-
-    Log_enteredMethod();
-    
-    NSMutableDictionary* answer = [[NSMutableDictionary alloc] init];
-    
-    NSMutableDictionary* allJSONObjects = [[NSMutableDictionary alloc] init];
-    NSMutableArray* allNodes = [[NSMutableArray alloc] init];
-    
-    
-    [allJSONObjects setObject:answer forKey:[rootNode pk]];
-    
-    
-    NTNodeIterator* iterator = [NTNodeIterator childrenOf:rootNode];
-    
-    // build all the objects
-    for( NTNode* descendant = [iterator next]; nil != descendant; descendant = [iterator next] ) {
-
-        if( TYPE_ID_ARRAY == [[descendant typeId] longLongValue] ) {
-            
-            [allJSONObjects setObject:[[NSMutableArray alloc] init] forKey:[descendant pk]];
-
-        } else {
-            
-            [allJSONObjects setObject:[[NSMutableDictionary alloc] init] forKey:[descendant pk]];
-
-        }
-        [allNodes addObject:descendant];
-    }
-    
-    
-    // connect all the objects ...
-    {
-        for( NTNode* descendantNode in allNodes ) {
-            
-            NSString* edgeName = [descendantNode edgeName];
-            NSNumber* edgeIndex = [descendantNode edgeIndex];
-            
-            id descendantJSONObject = [allJSONObjects objectForKey:[descendantNode pk]];
-            
-            
-            id parent = [allJSONObjects objectForKey:[descendantNode parentPk]];
-            
-            if( [parent isKindOfClass:[NSMutableArray class]] ) {
-                NSMutableArray* parentArray = (NSMutableArray*)parent;
-                [self setBlob:descendantJSONObject atIndex:[edgeIndex longValue] inArray:parentArray];
-            } else {
-                NSMutableDictionary* parentDictionary = (NSMutableDictionary*)parent;
-                [parentDictionary setObject:descendantJSONObject forKey:edgeName];
-            }
-        }
-    }
-    
-    // get all the properties ...
-    {
-        [self addPropertiesFor:rootNode toJSONObject:answer];
+        nextDictionary = [NSMutableDictionary new];
+        nextObject = nextDictionary;
         
-        for( NTNode* descendantNode in allNodes ) {
-            
-            id descendantBlob = [allJSONObjects objectForKey:[descendantNode pk]];
-            if( [descendantBlob isKindOfClass:[NSMutableArray class]] ) {
-                Log_warn( @"unimplemented" );
-            } else {
-                NSMutableDictionary* descendantJSONObject = (NSMutableDictionary*)descendantBlob;
-                [self addPropertiesFor:descendantNode toJSONObject:descendantJSONObject];
-            }
-        }
+    } else if( 91 == [typeId intValue] ) { // array; 91 == '['
+        
+        nextArray = [NSMutableArray new];
+        nextObject = nextArray;
+        
+    } else { // something else
+        
+        Log_warnInt( [typeId intValue] );
+        return self;
+        
     }
     
-    return answer;
+    [_stack addObject:nextObject];
+
     
+    if( nil == _rootDictionary && nil == _rootArray ) {
+        _rootArray = _currentArray = nextArray;
+        _rootDictionary = _currentDictionary = nextDictionary;
+        return self;
+    }
+
+    
+    if( nil != _currentDictionary) {
+        
+        [_currentDictionary setObject:nextObject forKey:edgeName];
+        
+    } else if( nil != _currentArray ) {
+        
+        [NTJSONReader addObject:nextObject toArray:_currentArray atIndex:edgeIndex];
+        
+    } else {
+        Log_warn( @"unexpected code path" );
+    }
+    
+    _currentArray = nextArray;
+    _currentDictionary = nextDictionary;
+    return self;
 }
 
 
+
+- (void)onPropertyWithEdgeName:(NSString*)edgeName edgeIndex:(NSNumber*)edgeIndex withValue:(NSObject*)value {
+
+    
+//    if( nil != edgeName ) {
+//        Log_debugString( edgeName );
+//    }
+
+    if( nil != _currentDictionary ) {
+        [_currentDictionary setObject:value forKey:edgeName];
+        
+    } else {
+        [NTJSONReader addObject:value toArray:_currentArray atIndex:edgeIndex];
+    }
+    
+}
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withBooleanValue:(BOOL)value {
+    
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:[NSNumber numberWithBool:value]];
+    
+}
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withIntegerValue:(int64_t)value {
+    
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:[NSNumber numberWithLong:value]];
+}
+
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withNullValue:(NSNull*)value {
+
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:value];
+
+}
+
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withRealValue:(double)value {
+    
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:[NSNumber numberWithDouble:value]];
+}
+
+
+- (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withStringValue:(NSString*)value {
+
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:value];
+}
+
+
+
+- (void)onNodeEndForReader:(NTNodeTreeReader*)nodeTreeReader nodePk:(NSNumber*)nodePk nodePath:(NSString*)nodePath edgeName:(NSString*)edgeName edgeIndex:(NSNumber*)edgeIndex typeId:(NSNumber*)typeId {
+    
+    
+//    if( nil != edgeName ) {
+//        Log_debugString( edgeName );
+//    }
+
+    
+    [_stack removeLastObject];
+    NSObject* topObject = [_stack lastObject];
+    
+    if( [topObject isKindOfClass:[NSMutableDictionary class]] ) {
+        
+        _currentArray = nil;
+        _currentDictionary = (NSMutableDictionary*)topObject;
+        
+    } else {
+        _currentArray = (NSMutableArray*)topObject;
+        _currentDictionary = nil;
+    }
+    
+}
 
 @end

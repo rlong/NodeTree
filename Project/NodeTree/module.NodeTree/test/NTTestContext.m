@@ -6,6 +6,8 @@
 //
 //
 
+#import "NTNodeTreeSchema.h"
+
 #import "NTNodeTree.h"
 #import "NTNodeTreeSchema.h"
 #import "NTTestContext.h"
