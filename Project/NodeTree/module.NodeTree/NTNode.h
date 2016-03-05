@@ -111,6 +111,11 @@
 - (void)setString:(NSString*)value forKey:(NSString*)key;
 
 
+#pragma mark - remove
+
+
+- (void)remove;
+
 #pragma mark - remove property
 
 

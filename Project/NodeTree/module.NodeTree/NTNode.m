@@ -813,6 +813,76 @@
     
 }
 
+#pragma mark - remove
+
+
+- (void)remove;
+{
+
+    
+    CASqliteConnection* connection = [_context sqliteConnection];
+    
+    NSString* isChildOfThis = [_pkPath stringByAppendingString:@"%"];
+    Log_debugString( isChildOfThis );
+    Log_debugLongLong( [_pk longLongValue] );
+    
+    // remove properties of the children nodes ...
+    {
+        NSString* sql = @"delete from node_property where node_pk in (select pk from node where parent_pk_path like ?)";
+        
+        CASqliteStatement* sqliteStatement = [connection prepare:sql];
+        
+        @try {
+            
+            [sqliteStatement bindText:isChildOfThis atIndex:1];
+            [sqliteStatement step];
+            
+        }
+        @finally {
+            [sqliteStatement finalize];
+        }
+        
+    }
+    
+    
+    // remove my properties ...
+    [self removeAllProperties];
+    
+    // remove all the children nodes ...
+    {
+        NSString* sql = @"delete from node where parent_pk_path like ?";
+        
+        CASqliteStatement* sqliteStatement = [connection prepare:sql];
+        
+        @try {
+            
+            [sqliteStatement bindText:isChildOfThis atIndex:1];
+            [sqliteStatement step];
+            
+        }
+        @finally {
+            [sqliteStatement finalize];
+        }
+        
+    }
+    
+    // remove our self
+    {
+        NSString* sql = @"delete from node where pk = ?";
+        
+        CASqliteStatement* sqliteStatement = [connection prepare:sql];
+        
+        @try {
+            
+            [sqliteStatement bindInt64:[_pk longLongValue] atIndex:1];
+            [sqliteStatement step];
+        }
+        @finally {
+            [sqliteStatement finalize];
+        }
+    }
+    
+}
 
 #pragma mark - remove property
 
@@ -821,7 +891,7 @@
 {
     
     CASqliteConnection* connection = [_context sqliteConnection];
-    NSString* sql = @"delete from node_property where node_pk = ? ";
+    NSString* sql = @"delete from node_property where node_pk = ?";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     

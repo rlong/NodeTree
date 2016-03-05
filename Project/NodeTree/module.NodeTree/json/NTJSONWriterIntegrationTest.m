@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 
 
-#import "FALog.h"
+#import "CALog.h"
 
 #import "JBBaseException.h"
 #import "JBExceptionHelper.h"
