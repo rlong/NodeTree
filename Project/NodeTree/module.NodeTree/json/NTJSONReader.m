@@ -139,7 +139,7 @@
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withIntegerValue:(int64_t)value {
     
-    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:[NSNumber numberWithLong:value]];
+    [self onPropertyWithEdgeName:name edgeIndex:edgeIndex withValue:[NSNumber numberWithLongLong:value]];
 }
 
 
