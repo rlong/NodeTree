@@ -11,7 +11,6 @@
 
 @class NTNode;
 @class NTNodeTreeReader;
-@protocol NTNodePropertyDelegate;
 
 
 @protocol NTNodeTreeReaderDelegate <NSObject>

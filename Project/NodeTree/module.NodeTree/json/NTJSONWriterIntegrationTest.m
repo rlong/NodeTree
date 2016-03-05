@@ -33,9 +33,6 @@
 
 }
 
-
-
-
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -62,31 +59,34 @@
 
 -(void)testWriteVLCPlayingStatus {
     
-    
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json" ofType:nil];
-    XCTAssertNotNil( path );
-    
-    
-    NSData* jsonData = nil;
-    {
-        NSDataReadingOptions options = 0;
-        NSError* error = nil;
-        jsonData = [NSData dataWithContentsOfFile:path options:options error:&error];
 
-        XCTAssertNil( error );
-        XCTAssertNotNil( jsonData );
-    
-    }
-    
     NSDictionary* json = nil;
     {
-        NSJSONReadingOptions options = NSJSONReadingMutableContainers;
-        NSError* error = nil;
-        json = [NSJSONSerialization JSONObjectWithData:jsonData options:options error:&error];
-
-        XCTAssertNil( error );
-        XCTAssertNotNil( json );
-
+        NSString* path = [[NSBundle mainBundle] pathForResource:@"NTJSONWriterIntegrationTest.testWriteVLCPlayingStatus.json" ofType:nil];
+        XCTAssertNotNil( path );
+        
+        
+        NSData* jsonData = nil;
+        {
+            NSDataReadingOptions options = 0;
+            NSError* error = nil;
+            jsonData = [NSData dataWithContentsOfFile:path options:options error:&error];
+            
+            XCTAssertNil( error );
+            XCTAssertNotNil( jsonData );
+            
+        }
+        
+        {
+            NSJSONReadingOptions options = NSJSONReadingMutableContainers;
+            NSError* error = nil;
+            json = [NSJSONSerialization JSONObjectWithData:jsonData options:options error:&error];
+            
+            XCTAssertNil( error );
+            XCTAssertNotNil( json );
+            
+        }
+        
     }
     
     NTTestContext* testContext = [NTTestContext defaultContext];
