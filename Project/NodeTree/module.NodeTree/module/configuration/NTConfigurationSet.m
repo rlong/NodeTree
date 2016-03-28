@@ -57,6 +57,11 @@
  
     
     NSString* directory = [CAFolderUtilities getApplicationSupportDirectory];
+    
+    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    directory = [NSString stringWithFormat:@"%@/%@", directory, bundleIdentifier];
+    [CAFolderUtilities mkdirs:directory];
+    
     Log_debugString( directory );
 
 #ifdef DEBUG

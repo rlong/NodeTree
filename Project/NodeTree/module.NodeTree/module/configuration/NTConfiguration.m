@@ -141,7 +141,7 @@
     } else {
         
         BOOL answer = [number boolValue];
-        Log_debugFormat( @"_name: '%@'; key: '%@'; answer = %d", answer );
+        Log_debugFormat( @"_name: '%@'; key: '%@'; answer = %d", _name, key, answer );
         return answer;
         
     }
