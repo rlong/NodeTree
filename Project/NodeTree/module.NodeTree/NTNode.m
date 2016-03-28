@@ -9,6 +9,7 @@
 // #import "VLC_Pal-Swift.h"
 #import "Mc_Remote-Swift.h"
 
+#import "CABaseException.h"
 #import "CALog.h"
 #import "CASqliteConnection.h"
 #import "CASqliteStatement.h"
@@ -16,7 +17,6 @@
 #import "ErrorBuilder.h"
 
 
-#import "JBBaseException.h"
 
 
 #import "NTIntegerEncoder.h"

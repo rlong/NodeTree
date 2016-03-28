@@ -8,9 +8,10 @@
 
 #import "CAColumnDescriptor.h"
 #import "CASchemaManager.h"
-#import "NTNodeTreeSchema.h"
 #import "CASqliteConnection.h"
 #import "CATableDescriptor.h"
+
+#import "NTNodeTreeSchema.h"
 
 
 @implementation NTNodeTreeSchema

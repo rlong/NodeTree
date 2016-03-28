@@ -6,7 +6,8 @@
 //
 
 
-#import "JBLog.h"
+#import "CALog.h"
+
 #import "NTJSONReader.h"
 
 @implementation NTJSONReader {

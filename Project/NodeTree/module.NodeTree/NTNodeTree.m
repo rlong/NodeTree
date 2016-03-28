@@ -6,12 +6,12 @@
 //
 
 
+#import "CABaseException.h"
+#import "CAFileUtilities.h"
 #import "CALog.h"
 #import "CASqliteConnection.h"
 #import "CASqliteStatement.h"
 
-#import "JBBaseException.h"
-#import "JBFileUtilities.h"
 
 
 
@@ -173,7 +173,7 @@
 -(NTNodeContext*)openContext {
 
     // database does not exists ...
-    if( ! [JBFileUtilities fileExistsAtPath:_databasePath] ) {
+    if( ! [CAFileUtilities fileExistsAtPath:_databasePath] ) {
         
         [NTNodeTreeSchema buildSchema:_databasePath];
     }
