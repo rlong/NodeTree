@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NTJSONReaderIntegrationTest.m
-//  NodeTree
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 13/02/2016.
-//  Copyright © 2016 com.hexbeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import <XCTest/XCTest.h>

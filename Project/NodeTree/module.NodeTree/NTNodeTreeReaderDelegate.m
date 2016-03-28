@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NTNodeTreeReaderDelegate.m
-//  NodeTree
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 15/11/2015.
-//  Copyright © 2015 com.hexbeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 
@@ -44,29 +43,29 @@
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withBooleanValue:(BOOL)value;
 {
-    Log_debugFormat( @"%@: %d", name, value );
+    Log_debugFormat( @"%@[%d]: %d", name, [edgeIndex integerValue], value );
 }
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withIntegerValue:(int64_t)value;
 {
-    Log_debugFormat( @"%@: %d", name, value );
+    Log_debugFormat( @"%@[%d]: %d", name, [edgeIndex integerValue], value );
 }
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withNullValue:(NSNull*)value;
 {
     
-    Log_debugFormat( @"%@: NULL", name, value );
+    Log_debugFormat( @"%@[%d]: NULL", name, [edgeIndex integerValue], value );
 }
 
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withRealValue:(double)value;
 {
-    Log_debugFormat( @"%@: %f", name, value );
+    Log_debugFormat( @"%@[%d]: %f", name, [edgeIndex integerValue], value );
 }
 
 - (void)onPropertyWithEdgeName:(NSString*)name edgeIndex:(NSNumber*)edgeIndex withStringValue:(NSString*)value;
 {
-    Log_debugFormat( @"%@: %@", name, value );
+    Log_debugFormat( @"%@[%d]: %@", name, [edgeIndex integerValue], value );
 }
 
 

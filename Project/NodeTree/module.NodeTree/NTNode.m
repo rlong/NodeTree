@@ -1,16 +1,18 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  XPSqliteNodeHandle.m
-//  vlc_amigo
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 5/05/13.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
-//
+
+// #import "NodeTree-Swift.h"
+// #import "VLC_Pal-Swift.h"
+#import "Mc_Remote-Swift.h"
 
 #import "CALog.h"
 #import "CASqliteConnection.h"
 #import "CASqliteStatement.h"
 
-#import "NodeTree-Swift.h"
 #import "ErrorBuilder.h"
 
 
@@ -65,7 +67,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,?,null,?)";
+    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,?,0,?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -93,7 +95,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
 
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,?,null)";
+    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,?,0)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -149,7 +151,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,null,?)";
+    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,'',?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -177,7 +179,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,null,?,?)";
+    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,'',?,?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -284,7 +286,7 @@
 -(void)setBool:(BOOL)value withKey:(NSString*)key;
 {
     
-    [self setBool:value withKey:key atIndex:nil];
+    [self setBool:value withKey:key atIndex:@(0)];
     
 }
 
@@ -366,14 +368,14 @@
 -(void)setInteger:(int64_t)value atIndex:(int64_t)index;
 {
     
-    [self setInteger:value withKey:nil atIndex:@(index)];
+    [self setInteger:value withKey:@"" atIndex:@(index)];
 
 }
 
 
 -(void)setInteger:(int64_t)value withKey:(NSString*)key {
     
-    [self setInteger:value withKey:key atIndex:nil];
+    [self setInteger:value withKey:key atIndex:@(0)];
 
     
 }
@@ -447,13 +449,13 @@
 
 - (void)setNumber:(NSNumber*)number atIndex:(int64_t)index;
 {
-    [self setNumber:number withKey:nil atIndex:@(index)];
+    [self setNumber:number withKey:@"" atIndex:@(index)];
 
 }
 
 - (void)setNumber:(NSNumber*)number withKey:(NSString*)key;
 {
-    [self setNumber:number withKey:key atIndex:nil];
+    [self setNumber:number withKey:key atIndex:@(0)];
     
 }
 
@@ -510,7 +512,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,null,?)";
+    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,'',?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -531,7 +533,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,?,null)";
+    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,?,0)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -567,7 +569,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,null,?,?)";
+    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,'',?,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -592,7 +594,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,?,null,?)";
+    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,?,0,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -619,7 +621,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"select string_value from node_property where node_pk = ? and edge_name = ? and edge_index = null";
+    NSString* sql = @"select string_value from node_property where node_pk = ? and edge_name = ? and edge_index = 0";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -679,7 +681,7 @@
     
         CASqliteConnection* connection = [_context sqliteConnection];
     
-        NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,null,?,?)";
+        NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,'',?,?)";
         CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
         @try {
@@ -702,7 +704,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,?,null,?)";
+    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,?,0,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -954,8 +956,6 @@
     }
     
 }
-
-
 
 
 

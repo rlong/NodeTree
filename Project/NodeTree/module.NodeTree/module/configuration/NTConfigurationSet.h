@@ -5,12 +5,16 @@
 //  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
-#import "NTNodeProperty.h"
 
-@implementation NTNodeProperty
-
+#import <Foundation/Foundation.h>
 
 
+@class NTConfiguration;
+
+@interface NTConfigurationSet : NSObject
+
+
+- (NTConfiguration*)getConfigurationWithName:(NSString*)name;
 
 
 @end

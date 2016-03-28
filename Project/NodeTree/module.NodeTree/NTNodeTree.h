@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NDNodeDatabase.h
-//  prototype
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 27/11/12.
-//  Copyright (c) 2012 HexBeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import <Foundation/Foundation.h>
@@ -20,6 +19,16 @@
     //@synthesize databasePath = _databasePath;
 
 }
+
+#pragma mark - instance lifecycle
+
+
+-(id)initWithDatabasePath:(NSString*)databasePath;
+
+#pragma mark - 
+
+
++ (NSString*)databaseVersion;
 
 //+(NBNodeBarn*)open:(NSString*)databaseFilename;
 //-(NBNode*)addRootToContext:(NBNodeContext*)context withKey:(NSString*)key;
@@ -38,10 +47,5 @@
 -(NTNodeContext*)openContext;
 -(void)closeContext:(NTNodeContext*)context;
 
-#pragma mark -
-#pragma mark instance lifecycle
-
-
--(id)initWithDatabasePath:(NSString*)databasePath;
 
 @end

@@ -1,10 +1,8 @@
-
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  XPSqliteNodeContext.m
-//  vlc_amigo
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 5/05/13.
-//
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import "CALog.h"

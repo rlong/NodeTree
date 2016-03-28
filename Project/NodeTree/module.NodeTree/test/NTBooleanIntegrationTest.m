@@ -1,11 +1,9 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  XPAddBooleanIntegrationTest.m
-//  vlc_amigo
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 6/05/13.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
-//
-
 
 
 #import <XCTest/XCTest.h>

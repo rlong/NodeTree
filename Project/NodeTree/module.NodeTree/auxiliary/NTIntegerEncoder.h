@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  XPIntegerEncoder.h
-//  vlc_amigo
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 4/05/13.
-//
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import <Foundation/Foundation.h>

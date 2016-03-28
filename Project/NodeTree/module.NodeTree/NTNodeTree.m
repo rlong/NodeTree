@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NDNodeDatabase.m
-//  prototype
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 27/11/12.
-//  Copyright (c) 2012 HexBeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 
@@ -44,11 +43,39 @@
 
 @implementation NTNodeTree
 
+#pragma mark - instance lifecycle
+
+
+-(id)initWithDatabasePath:(NSString*)databasePath {
+    
+    
+    NTNodeTree* answer = [super init];
+    
+    if( nil != answer ) {
+        
+        [answer setDatabasePath:databasePath];
+        
+    }
+    
+    return answer;
+    
+}
+
+-(void)dealloc {
+    
+    [self setDatabasePath:nil];
+    
+    
+}
 
 
 #pragma mark - 
-#pragma mark <XPNodeDatabase> implementation
 
+
++ (NSString*)databaseVersion;
+{
+    return @"1.0";
+}
 
 -(NTNode*)addRootToContext:(NTNodeContext*)context withKey:(NSString*)key {
     
@@ -168,31 +195,7 @@
 #pragma mark -
 
 
-#pragma mark -
-#pragma mark instance lifecycle
 
-
--(id)initWithDatabasePath:(NSString*)databasePath {
-    
-   
-    NTNodeTree* answer = [super init];
-    
-    if( nil != answer ) {
-        
-        [answer setDatabasePath:databasePath];
-        
-    }
-    
-    return answer;
-    
-}
-
--(void)dealloc {
-	
-	[self setDatabasePath:nil];
-	
-	
-}
 
 
 #pragma mark -

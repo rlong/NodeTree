@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NodeTreeTests.m
-//  NodeTreeTests
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 12/09/2015.
-//  Copyright (c) 2015 com.hexbeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import <UIKit/UIKit.h>

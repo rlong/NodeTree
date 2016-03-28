@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NTJSONReader.h
-//  NodeTree
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 17/12/2015.
-//  Copyright © 2015 com.hexbeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 #import <Foundation/Foundation.h>

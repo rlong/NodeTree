@@ -1,9 +1,8 @@
+//  https://github.com/rlong/cocoa.lib.NodeTree
 //
-//  NTNodeStream.m
-//  NodeTree
+//  Copyright (c) 2015 Richard Long
 //
-//  Created by rlong on 15/11/2015.
-//  Copyright © 2015 com.hexbeerium. All rights reserved.
+//  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
 
