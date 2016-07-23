@@ -5,18 +5,11 @@
 //  Released under the MIT license ( http://opensource.org/licenses/MIT )
 //
 
-// #import "NodeTree-Swift.h"
-// #import "VLC_Pal-Swift.h"
-#import "Mc_Remote-Swift.h"
 
 #import "CABaseException.h"
 #import "CALog.h"
 #import "CASqliteConnection.h"
 #import "CASqliteStatement.h"
-
-#import "ErrorBuilder.h"
-
-
 
 
 #import "NTIntegerEncoder.h"
@@ -231,9 +224,18 @@
     
     if( nil == answer ) {
         
+        NSString* keyString = @"NULL";
+        if( nil != key ) {
+            keyString = [NSString stringWithFormat:@"'%@'", key];
+        }
         
-        *error = ErrorBuilder_errorForFailure( @"nil == answer" );
-        return false;
+        NSString* indexString = @"NULL";
+        if( nil != index ) {
+            keyString = [NSString stringWithFormat:@"%ld", [index integerValue]];
+        }
+        
+        @throw exceptionWithFormat( @"nil == answer; key = %@; index = %@", keyString, indexString );
+        
     }
     
     return [answer boolValue];
@@ -320,9 +322,18 @@
     
     if( nil == answer ) {
         
+        NSString* keyString = @"NULL";
+        if( nil != key ) {
+            keyString = [NSString stringWithFormat:@"'%@'", key];
+        }
         
-        *error = ErrorBuilder_errorForFailure( @"nil == answer" );
-        return false;
+        NSString* indexString = @"NULL";
+        if( nil != index ) {
+            keyString = [NSString stringWithFormat:@"%ld", [index integerValue]];
+        }
+        
+        @throw exceptionWithFormat( @"nil == answer; key = %@; index = %@", keyString, indexString );
+
     }
     
     return [answer longLongValue];
