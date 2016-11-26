@@ -131,7 +131,7 @@
     
     const char* objCType = [number objCType];
     
-    if (!strcmp(objCType, @encode(BOOL)) == 0) {
+    if (strcmp(objCType, @encode(BOOL)) != 0) {
 
         // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
         
