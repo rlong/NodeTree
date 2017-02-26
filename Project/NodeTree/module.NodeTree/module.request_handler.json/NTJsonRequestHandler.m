@@ -11,6 +11,7 @@
 #import "CAJsonObject.h"
 #import "CAJsonObjectHandler.h"
 
+#import "HLDataEntity.h"
 #import "HLEntityHelper.h"
 #import "HLHttpMethod.h"
 #import "HLHttpErrorHelper.h"
@@ -20,8 +21,12 @@
 
 
 #import "NTJSONWriter.h"
-#import "NTNodeTree.h"
+#import "NTJSONReader.h"
+#import "NTNode.h"
 #import "NTNodeContext.h"
+#import "NTNodeTree.h"
+#import "NTNodeTreeReader.h"
+
 
 
 #import "NTJsonRequestHandler.h"
@@ -58,16 +63,51 @@ NTNodeContext* _nodeContext;
 -(NSString*)getProcessorUri {
     
     return @"/NTJsonRequestHandler";
-    
 }
 
--(HLHttpResponse*)processRequest:(HLHttpRequest*)request {
-    
-    
-    if( [HLHttpMethod POST] != [request method] ) {
-        Log_errorFormat( @"unsupported method; [[request method] name] = '%@'", [[request method] name]);
-        @throw [HLHttpErrorHelper badRequest400FromOriginator:self line:__LINE__];
+-(HLHttpResponse*)processGet:(HLHttpRequest*)request {
+
+
+
+    HLDataEntity* dataEntity;
+    [_nodeContext begin];
+    {
+        NSString* rootKey = [request requestUri];
+        Log_debugString( rootKey );
+        NTNode* rootNode = [_nodeContext getRootWithKey:rootKey createIfNeeded:false];
+        
+        // bad name ...
+        if( nil == rootNode ) {
+            
+            Log_errorFormat( @"nil == rootNode; rootKey = '%@'", rootKey );
+            @throw [HLHttpErrorHelper notFound404FromOriginator:self line:__LINE__];
+        }
+        
+        NTJSONReader* delegate = [[NTJSONReader alloc] init];
+        [NTNodeTreeReader readFromRoot:rootNode delegate:delegate];
+        NSMutableDictionary* rootDictionary = [delegate rootDictionary];
+        
+        NSJSONWritingOptions options = 0;
+        NSError* error = nil;
+        NSData* data = [NSJSONSerialization dataWithJSONObject:rootDictionary options:options error:&error];
+        
+        if( nil != error ) {
+            
+            Log_errorError( error );
+            @throw  [HLHttpErrorHelper internalServerError500FromOriginator:self line:__LINE__];
+        }
+
+        dataEntity = [[HLDataEntity alloc] initWithData:data];
     }
+    [_nodeContext commit];
+    
+    return [[HLHttpResponse alloc] initWithStatus:HttpStatus_OK_200 entity:dataEntity];
+    
+
+}
+
+
+-(HLHttpResponse*)processPost:(HLHttpRequest*)request {
     
     id<HLEntity> entity = [request entity];
     
@@ -80,31 +120,50 @@ NTNodeContext* _nodeContext;
     NSData* jsonData = [HLEntityHelper toData:entity];
     Log_debugData( jsonData );
     
-//    NSJSONReadingOptions options = NSJSONReadingMutableContainers;
     NSJSONReadingOptions options = 0;
     NSError* error = nil;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:options error:&error];
     
-    Log_debugPointer( (void*)json );
-    Log_debugPointer( (void*)json );
-    Log_debugPointer( (void*)json );
     if( nil != error ) {
         
         Log_errorError( error );
         @throw  [HLHttpErrorHelper internalServerError500FromOriginator:self line:__LINE__];
     }
-
+    
     [_nodeContext begin];
     {
-        NSString* requestUri = [request requestUri];
-        Log_debugString( requestUri );
+        NSString* rootKey = [request requestUri];
+        Log_debugString( rootKey );
         
-        NTNode* rootNode = [_nodeContext addRootWithKey:requestUri];
+        NTNode* rootNode = [_nodeContext getRootWithKey:rootKey createIfNeeded:false];
+        
+        // remove the old ...
+        if( nil != rootNode ) {
+            [rootNode remove];
+        }
+        
+        rootNode = [_nodeContext addRootWithKey:rootKey];
         [NTJSONWriter addJSONDictionary:json toNode:rootNode];
     }
     [_nodeContext commit];
     
     return [[HLHttpResponse alloc] initWithStatus:HttpStatus_OK_200];
+
+}
+
+
+-(HLHttpResponse*)processRequest:(HLHttpRequest*)request {
+    
+    if( [HLHttpMethod GET] == [request method] ) {
+        return [self processGet:request];
+    }
+    
+    if( [HLHttpMethod POST] == [request method] ) {
+        return [self processPost:request];
+    }
+
+    Log_errorFormat( @"unsupported method; [[request method] name] = '%@'", [[request method] name]);
+    @throw [HLHttpErrorHelper badRequest400FromOriginator:self line:__LINE__];
 
 }
 

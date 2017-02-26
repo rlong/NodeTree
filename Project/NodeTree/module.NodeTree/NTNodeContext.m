@@ -43,8 +43,6 @@
 
 -(NTNode*)addRootWithKey:(NSString*)key {
     
-    
-    
     NSString* sql = @"insert into node (edge_name, edge_index) values(?,null)";
     
     CASqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
@@ -127,8 +125,6 @@
     @finally {
         [sqliteStatement finalize];
     }
-    
-    
 }
 
 
