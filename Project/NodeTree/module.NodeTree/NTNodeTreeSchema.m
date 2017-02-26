@@ -27,22 +27,22 @@ static CATableDescriptor* TABLES[] = { NULL, NULL, NULL };
         
         NSMutableArray* properties = [[NSMutableArray alloc] init];
         {
-            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"pk" properties:@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
+            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"NodeId" properties:@"INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL"];
             [properties addObject:columnDescriptor];
             
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"parent_pk" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"ParentId" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"parent_pk_path" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"ParentPath" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"EdgeName" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"EdgeIndex" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"type_id" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"Tag" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
             // ---------------------------------------------------------
@@ -53,7 +53,7 @@ static CATableDescriptor* TABLES[] = { NULL, NULL, NULL };
         
         NSMutableArray* constaints = [[NSMutableArray alloc] init];
         {
-            [constaints addObject:@"CONSTRAINT node_edge_constraint UNIQUE( parent_pk, edge_name, edge_index) on conflict abort"];
+            [constaints addObject:@"CONSTRAINT node_edge_constraint UNIQUE( ParentId, EdgeName, EdgeIndex) on conflict abort"];
             
             [node setConstraints:constaints];
         }
@@ -62,46 +62,46 @@ static CATableDescriptor* TABLES[] = { NULL, NULL, NULL };
 
         NSMutableArray* indexes = [[NSMutableArray alloc] init];
         {
-            [indexes addObject:@"CREATE INDEX if not exists node_parent_pk_path ON node ( parent_pk_path );"];
+            [indexes addObject:@"CREATE INDEX if not exists node_ParentPath ON node ( ParentPath );"];
             [node setIndexes:indexes];
         }
         
     }
     
     {
-        CATableDescriptor* nodeProperty = [[CATableDescriptor alloc] initWithName:@"node_property"];
+        CATableDescriptor* nodeProperty = [[CATableDescriptor alloc] initWithName:@"NodeProperty"];
         TABLES[1] = nodeProperty; // no need to release the `node`
         
         NSMutableArray* properties = [[NSMutableArray alloc] init];
         {
             
-            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"node_pk" properties:@"INTEGER NOT NULL"];
+            CAColumnDescriptor* columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"NodeId" properties:@"INTEGER NOT NULL"];
             [properties addObject:columnDescriptor];
             
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_name" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"EdgeName" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
             
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"edge_index" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"EdgeIndex" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
             
             
             // ---------------------------------------------------------
             
             
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"blob_value" properties:@"BLOB"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"BlobValue" properties:@"BLOB"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"boolean_value" properties:@"BOOLEAN"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"BooleanValue" properties:@"BOOLEAN"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"integer_value" properties:@"INTEGER"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"IntegerValue" properties:@"INTEGER"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"real_value" properties:@"REAL"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"RealValue" properties:@"REAL"];
             [properties addObject:columnDescriptor];
 
-            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"string_value" properties:@"TEXT"];
+            columnDescriptor = [[CAColumnDescriptor alloc] initWithName:@"TextValue" properties:@"TEXT"];
             [properties addObject:columnDescriptor];
 
 
@@ -111,7 +111,7 @@ static CATableDescriptor* TABLES[] = { NULL, NULL, NULL };
         
         NSMutableArray* constaints = [[NSMutableArray alloc] init];
         {
-            [constaints addObject:@"PRIMARY KEY ( node_pk, edge_name, edge_index) on conflict abort"];
+            [constaints addObject:@"PRIMARY KEY ( NodeId, EdgeName, EdgeIndex) on conflict abort"];
             
             [nodeProperty setConstraints:constaints];
         }

@@ -43,7 +43,7 @@
 
 -(NTNode*)addRootWithKey:(NSString*)key {
     
-    NSString* sql = @"insert into node (edge_name, edge_index) values(?,null)";
+    NSString* sql = @"insert into node (EdgeName, EdgeIndex) values(?,null)";
     
     CASqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
     
@@ -95,7 +95,7 @@
 // can return nil if 'createIfNeeded' is false */
 -(NTNode*)getRootWithKey:(NSString*)key createIfNeeded:(bool)createIfNeeded {
     
-    NSString* sql = @"select pk from node where edge_name = ? and parent_pk is NULL";
+    NSString* sql = @"select NodeId from node where EdgeName = ? and ParentId is NULL";
     
     CASqliteStatement* sqliteStatement = [_sqliteConnection prepare:sql];
     

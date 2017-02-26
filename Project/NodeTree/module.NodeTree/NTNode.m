@@ -60,7 +60,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,?,0,?)";
+    NSString* sql = @"insert into node (ParentId, ParentPath, EdgeName, EdgeIndex, Tag) values(?,?,?,0,?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -88,7 +88,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
 
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,?,0)";
+    NSString* sql = @"insert into node (ParentId, ParentPath, EdgeName, EdgeIndex) values(?,?,?,0)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -115,7 +115,7 @@
 
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,?,?)";
+    NSString* sql = @"insert into node (ParentId, ParentPath, EdgeName, EdgeIndex) values(?,?,?,?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -144,7 +144,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index) values(?,?,'',?)";
+    NSString* sql = @"insert into node (ParentId, ParentPath, EdgeName, EdgeIndex) values(?,?,'',?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -172,7 +172,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert into node (parent_pk, parent_pk_path, edge_name, edge_index, type_id) values(?,?,'',?,?)";
+    NSString* sql = @"insert into node (ParentId, ParentPath, EdgeName, EdgeIndex, Tag) values(?,?,'',?,?)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -523,7 +523,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,'',?)";
+    NSString* sql = @"insert or replace into NodeProperty(NodeId, EdgeName, EdgeIndex) values(?,'',?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -544,7 +544,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index) values(?,?,0)";
+    NSString* sql = @"insert or replace into NodeProperty(NodeId, EdgeName, EdgeIndex) values(?,?,0)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -580,7 +580,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,'',?,?)";
+    NSString* sql = @"insert or replace into NodeProperty (NodeId, EdgeName, EdgeIndex, RealValue) values(?,'',?,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -605,7 +605,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, real_value) values(?,?,0,?)";
+    NSString* sql = @"insert or replace into NodeProperty (NodeId, EdgeName, EdgeIndex, RealValue) values(?,?,0,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -632,7 +632,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"select string_value from node_property where node_pk = ? and edge_name = ? and edge_index = 0";
+    NSString* sql = @"select TextValue from NodeProperty where NodeId = ? and EdgeName = ? and EdgeIndex = 0";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -692,7 +692,7 @@
     
         CASqliteConnection* connection = [_context sqliteConnection];
     
-        NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,'',?,?)";
+        NSString* sql = @"insert or replace into NodeProperty(NodeId, EdgeName, EdgeIndex, TextValue) values(?,'',?,?)";
         CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
         @try {
@@ -715,7 +715,7 @@
     
     CASqliteConnection* connection = [_context sqliteConnection];
     
-    NSString* sql = @"insert or replace into node_property(node_pk, edge_name, edge_index, string_value) values(?,?,0,?)";
+    NSString* sql = @"insert or replace into NodeProperty(NodeId, EdgeName, EdgeIndex, TextValue) values(?,?,0,?)";
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
     @try {
@@ -750,7 +750,7 @@
         indexComparator = @"is";
     }
     
-    NSString *sql = [NSString stringWithFormat:@"select boolean_value, integer_value, real_value, string_value from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
+    NSString *sql = [NSString stringWithFormat:@"select BooleanValue, IntegerValue, RealValue, TextValue from NodeProperty where NodeId = ? and EdgeName %@ ? and EdgeIndex %@ ?", keyComparator, indexComparator];
     
     CASqliteStatement *sqliteStatement = [connection prepare:sql];
     
@@ -801,7 +801,7 @@
 - (void)insertOrReplacePropertyWithKey:(NSString*)key atIndex:(NSNumber*)index booleanValue:(NSNumber*)booleanValue integerValue:(NSNumber*)integerValue realValue:(NSNumber*)realValue stringValue:(NSString*)stringValue;
 {
     
-    NSString* sql = @"insert or replace into node_property (node_pk, edge_name, edge_index, boolean_value, integer_value, real_value, string_value) values(?,?,?, ?,?,?,?)";
+    NSString* sql = @"insert or replace into NodeProperty (NodeId, EdgeName, EdgeIndex, BooleanValue, IntegerValue, RealValue, TextValue) values(?,?,?, ?,?,?,?)";
     
     CASqliteConnection* connection = [_context sqliteConnection];
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
@@ -841,7 +841,7 @@
     
     // remove properties of the children nodes ...
     {
-        NSString* sql = @"delete from node_property where node_pk in (select pk from node where parent_pk_path like ?)";
+        NSString* sql = @"delete from NodeProperty where NodeId in (select NodeId from node where ParentPath like ?)";
         
         CASqliteStatement* sqliteStatement = [connection prepare:sql];
         
@@ -863,7 +863,7 @@
     
     // remove all the children nodes ...
     {
-        NSString* sql = @"delete from node where parent_pk_path like ?";
+        NSString* sql = @"delete from node where ParentPath like ?";
         
         CASqliteStatement* sqliteStatement = [connection prepare:sql];
         
@@ -881,7 +881,7 @@
     
     // remove our self
     {
-        NSString* sql = @"delete from node where pk = ?";
+        NSString* sql = @"delete from node where NodeId = ?";
         
         CASqliteStatement* sqliteStatement = [connection prepare:sql];
         
@@ -904,7 +904,7 @@
 {
     
     CASqliteConnection* connection = [_context sqliteConnection];
-    NSString* sql = @"delete from node_property where node_pk = ?";
+    NSString* sql = @"delete from NodeProperty where NodeId = ?";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -949,7 +949,7 @@
         indexComparator = @"is";
     }
 
-    NSString* sql = [NSString stringWithFormat:@"delete from node_property where node_pk = ? and edge_name %@ ? and edge_index %@ ?", keyComparator, indexComparator];
+    NSString* sql = [NSString stringWithFormat:@"delete from NodeProperty where NodeId = ? and EdgeName %@ ? and EdgeIndex %@ ?", keyComparator, indexComparator];
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     

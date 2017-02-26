@@ -46,7 +46,7 @@
     [nodeContext begin];
     {
         NTNode* node = [nodeContext addRootWithKey:[self getRootName]];
-        [node setString:@"string_value" forKey:@"string_key"];
+        [node setString:@"TextValue" forKey:@"string_key"];
     }
     [nodeContext commit];
     
@@ -59,7 +59,7 @@
     NSString* rootName = [self getRootName];
     Log_debugString( rootName );
     
-    NSString* expectedValue = @"string_value";
+    NSString* expectedValue = @"TextValue";
 
     NTTestContext* testContext = [NTTestContext defaultContext];
     NTNodeContext* nodeContext = [testContext openContext];

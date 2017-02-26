@@ -34,7 +34,7 @@
         
         CASqliteConnection* sqliteConnection = [context sqliteConnection];
         
-        NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node";
+        NSString* sql = @"select NodeId, ParentId, ParentPath, EdgeName, EdgeIndex, Tag from node";
         
         _sqliteStatement = [sqliteConnection prepare:sql];
         _sqliteDone = false;
@@ -82,7 +82,7 @@
     
     CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
-    NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk_path like ? order by parent_pk_path"; // 'B.%'
+    NSString* sql = @"select NodeId, ParentId, ParentPath, EdgeName, EdgeIndex, Tag from node where ParentPath like ? order by ParentPath"; // 'B.%'
     
     CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     NSString* like = [[node pkPath] stringByAppendingString:@"%"];
@@ -101,7 +101,7 @@
     
     CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
-    NSString* sql = @"select pk, parent_pk, parent_pk_path, edge_name, edge_index, type_id from node where parent_pk = ?";
+    NSString* sql = @"select NodeId, ParentId, ParentPath, EdgeName, EdgeIndex, Tag from node where ParentId = ?";
     
     CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     [sqliteStatement bindInt64:[node.pk longLongValue] atIndex:1];
@@ -122,16 +122,16 @@
     if( SQLITE_ROW == resultCode ) {
         
         NSNumber* pk = [_sqliteStatement getNumberAtColumn:0 defaultTo:nil];
-        NSNumber* parent_pk = [_sqliteStatement getNumberAtColumn:1 defaultTo:nil];
-        NSString* parent_pk_path = [_sqliteStatement getStringAtColumn:2 defaultTo:nil];
-        NSString* edge_name = [_sqliteStatement getStringAtColumn:3 defaultTo:nil];
-        NSNumber* edge_index = [_sqliteStatement getNumberAtColumn:4 defaultTo:nil];
-        NSNumber* type_id = [_sqliteStatement getNumberAtColumn:5 defaultTo:nil];
+        NSNumber* ParentId = [_sqliteStatement getNumberAtColumn:1 defaultTo:nil];
+        NSString* ParentPath = [_sqliteStatement getStringAtColumn:2 defaultTo:nil];
+        NSString* EdgeName = [_sqliteStatement getStringAtColumn:3 defaultTo:nil];
+        NSNumber* EdgeIndex = [_sqliteStatement getNumberAtColumn:4 defaultTo:nil];
+        NSNumber* Tag = [_sqliteStatement getNumberAtColumn:5 defaultTo:nil];
         
-        NTNode* answer = [[NTNode alloc] initWithContext:_context pk:pk parentPk:parent_pk parentPkPath:parent_pk_path];
-        [answer setEdgeName:edge_name];
-        [answer setEdgeIndex:edge_index];
-        [answer setTypeId:type_id];
+        NTNode* answer = [[NTNode alloc] initWithContext:_context pk:pk parentPk:ParentId parentPkPath:ParentPath];
+        [answer setEdgeName:EdgeName];
+        [answer setEdgeIndex:EdgeIndex];
+        [answer setTypeId:Tag];
         
         Log_debugString( answer.edgeName );
         

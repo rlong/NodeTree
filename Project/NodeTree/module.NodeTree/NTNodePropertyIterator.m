@@ -62,7 +62,7 @@
     
     CASqliteConnection* sqliteConnection = [context sqliteConnection];
     
-    NSString* sql = @"select edge_name, edge_index, boolean_value, integer_value, real_value, string_value from node_property where node_pk = ?"; // 'B.%'
+    NSString* sql = @"select EdgeName, EdgeIndex, BooleanValue, IntegerValue, RealValue, TextValue from NodeProperty where NodeId = ?"; // 'B.%'
     
     CASqliteStatement* sqliteStatement = [sqliteConnection prepare:sql];
     [sqliteStatement bindInt64:[[node pk] longLongValue] atIndex:1];

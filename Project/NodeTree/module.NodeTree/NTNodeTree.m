@@ -83,7 +83,7 @@
     
     CASqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
     
-    NSString* sql = @"insert into node (edge_name, edge_index) values(?,0)";
+    NSString* sql = @"insert into node (EdgeName, EdgeIndex) values(?,0)";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
 
@@ -122,7 +122,7 @@
     NTNodeContext* sqlLiteNodeContext = (NTNodeContext*)context;
     
     CASqliteConnection* connection = [sqlLiteNodeContext sqliteConnection];
-    NSString* sql = @"select pk from node where edge_name = ? and root_pk is NULL";
+    NSString* sql = @"select NodeId from node where EdgeName = ? and ParentId is NULL";
     
     CASqliteStatement* sqliteStatement = [connection prepare:sql];
     
@@ -145,13 +145,10 @@
                 return nil;
             }
         }
-        
     }
     @finally {
         [sqliteStatement finalize];
     }
-
-    
     
 }
 
