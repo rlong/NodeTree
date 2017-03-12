@@ -64,11 +64,11 @@
     
     Log_debugString( directory );
 
-#ifdef DEBUG
-    
-    directory = @"/tmp";
-    
-#endif
+//#ifdef DEBUG
+//    
+//    directory = @"/tmp";
+//    
+//#endif
     
     NSString* answer = [NSString stringWithFormat:@"%@/NTConfigurationSet.%@.db", directory, [NTNodeTree databaseVersion] ];
     

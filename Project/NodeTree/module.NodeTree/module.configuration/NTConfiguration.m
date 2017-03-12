@@ -162,5 +162,58 @@
     
 }
 
+-(int64_t)integerValueForKey:(NSString*)key withDefaultValue:(int64_t)defaultValue;
+{
+    
+    
+    id value = [_values objectForKey:key];
+    
+    if( nil == value ) {
+        return defaultValue;
+    }
+    
+    if( ![value isKindOfClass:[NSNumber class]] ) {
+        Log_warnFormat( @"_name: '%@'; key: '%@'; NSStringFromClass([value class]): '%@'", _name, key, NSStringFromClass([value class]));
+        return defaultValue;
+    }
+    
+    NSNumber* number = (NSNumber*)value;
+    
+    // vvv http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+    
+    const char* objCType = [number objCType];
+    
+    if (strcmp(objCType, @encode(int64_t)) != 0) {
+        
+        // ^^^ http://stackoverflow.com/questions/2518761/get-type-of-nsnumber
+        
+        Log_warnFormat( @"_name: '%@'; key: '%@'; objCType: '%s'", _name, key, objCType);
+        return defaultValue;
+        
+    } else {
+        
+        int64_t answer = [number integerValue];
+        Log_debugFormat( @"_name: '%@'; key: '%@'; answer = %d", _name, key, answer );
+        return answer;
+        
+    }
+    
+    return defaultValue;
+}
+
+
+
+-(void)setIntegerValue:(int64_t)value forKey:(NSString *)key;
+{
+
+    [_context begin];
+    
+    [_node setInteger:value withKey:key]; // update db
+
+    [_context commit];
+    
+    [_values setObject:@(value) forKey:key]; // update memory
+}
+
 
 @end

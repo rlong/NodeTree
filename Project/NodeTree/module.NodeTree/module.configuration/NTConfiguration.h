@@ -25,5 +25,10 @@
 -(BOOL)boolValueForKey:(NSString*)key withDefaultValue:(BOOL)defaultValue;
 -(void)setBoolValue:(BOOL)value forKey:(NSString *)key;
 
+#pragma mark - integer
+
+-(int64_t)integerValueForKey:(NSString*)key withDefaultValue:(int64_t)defaultValue;
+-(void)setIntegerValue:(int64_t)value forKey:(NSString *)key;
+
 
 @end
